@@ -1,29 +1,37 @@
 package main.world;
 
-public class Location {
+public class Location implements utils.IPrintable {
 
-	int rows = 3;
-	int cols = 4;
+    private String name;
+    private String description;
+    private boolean state;
 
-	// Créer un tableau bidimensionnel
-	int[][] tableau = new int[rows][cols];
+    public Location(String name, String description, boolean state) {
+        this.name = name;
+        this.description = description;
+        this.state = state;
+    }
 
-	// Remplir le tableau avec des zéros
-	public Location() {
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				tableau[i][j] = 0;
-			}
-		}
-	}
+    public String getName() {
+        return this.name;
+    }
+    public String getDescription() {
+        return this.description;
+    }
+    public boolean getState() {
+        return this.state;
+    }
 
-	public void printTableau() {
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				System.out.print(tableau[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
+    @Override
+    public String getPrintableString() {
+        return this.getName();
+    }
+    @Override
+    public boolean isGrayedOut() {
+        return false;
+    }
 
+    
+    
 }
+

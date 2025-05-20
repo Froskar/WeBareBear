@@ -8,11 +8,7 @@ public class Game {
     
     public void run() {
         System.out.println("Running game...");
-        // your runtime code here...
 
-
-
-        // end of game
     }
 
 }
