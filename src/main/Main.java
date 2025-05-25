@@ -1,6 +1,7 @@
 package main;
 
 
+import main.commands.commandRegistery;
 import main.world.worldMap;
 import utils.Color;
 import utils.StringStyling;
@@ -16,9 +17,10 @@ public class Main {
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
         worldMap map = new worldMap();
-        map.displayMap();
+
+        commandRegistery registry = new commandRegistery();
+        registry.commandChoose();
+        }
+
 
     }
-
-
-}
