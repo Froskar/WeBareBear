@@ -17,6 +17,9 @@ public class worldMap {
         tableau[2][5] = new Location("Salle du trône", "Une salle gigantesque, pleine de reliques d'un ancien temps.", false);
         tableau[3][3] = new Location("Salle de réception", "Des squelettes autour d'une table, ils devaient bien festoyer à l'époque.", false);
     }
+    public Location[][] getWorldMap() {
+        return tableau;
+    }
 
     public void  displayMap() {
            String affichage = Array2Dprinter.print2DArray(tableau,0,0);

@@ -1,7 +1,7 @@
 package main;
 
 
-import main.world.worldMap;
+import main.commands.commandRegistery;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
@@ -14,10 +14,16 @@ public class Main {
         game.run();
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
-        worldMap map = new worldMap();
-        map.displayMap();
+        //        worldMap map = new worldMap();
+         System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
+        commandRegistery registry = new commandRegistery();
+        boolean gameWon = false;
+        while (gameWon == false) {
+       
+        registry.commandChoose();
+
+        }
+
 
     }
-
-
 }
