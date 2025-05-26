@@ -1,12 +1,12 @@
 package main.commands;
 
+import commands.commands.map;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import main.Game;
 import main.commands.commands.help;
-import main.commands.commands.map;
 
 public class commandRegistery {
 
@@ -19,6 +19,8 @@ public class commandRegistery {
         addCommand("Move", "Démarre une nouvelle partie.");
         addCommand("Look", "Sauvegarde la partie actuelle.");
         addCommand("Take", "Quitte le jeu.");
+        
+        
     }
 
     // Ajouter une commande
@@ -36,32 +38,19 @@ public class commandRegistery {
         return commandes;
     }
 
-
-
-
-
-
-
-
     public void commandChoose() {
         Game game = new Game();
         String command = game.getCommandInput();
         switch (command.toLowerCase()) {
             case "map" -> {
-                map mapInstance = new map();
-                mapInstance.displayMap();
+                displayMap();
             }
             case "help" -> {
-                help helpInstance = new help();
-                helpInstance.displayHelp();
+                displayHelp();
             }
             default -> {
                 System.out.println("Unknown command: " + command);
             }
         }
     }
-    
-
-    
-    
 }

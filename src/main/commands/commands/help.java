@@ -1,15 +1,15 @@
 package main.commands.commands;
 
+import main.commands.Command;
+
 import java.util.List;
 import java.util.Map;
-import main.commands.commandRegistery;
 
 
-public class help {
+public class help extends Command {
 
-    commandRegistery registry = new commandRegistery();
-
-    public void displayHelp() {
+    @Override
+    execute{
         List<Map.Entry<String, String>> commandes = registry.getCommandes();
         System.out.println("Commandes disponibles :");
         for (Map.Entry<String, String> commande : commandes) {

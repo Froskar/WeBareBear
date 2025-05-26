@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Game {
 
-    private java.util.Scanner scanner;
-
     public Game() {
         System.out.println("Initializing game...");
     }
@@ -19,8 +17,18 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("> Enter command: ");
         String input = scanner.nextLine();
-        System.out.println("test");
         return input;
     }
+    //SingleTon de game
+    private static Game INSTANCE;
+    public static Game getGameInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Game();
+        }
+        return INSTANCE;
+    }
+}
+
+
 
 }

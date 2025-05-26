@@ -1,12 +1,11 @@
-package main.commands.commands;
+package commands.commands;
 
-import main.world.worldMap;
 import utils.Array2Dprinter;
+import main.world.worldMap;
 
 public class map {
-    public void displayMap() {
-        worldMap wm = new worldMap();
-        String affichage = Array2Dprinter.print2DArray(wm.getWorldMap(), 0, 0);
+
+        String affichage = Array2Dprinter.print2DArray(Instance);
         System.out.println(affichage);
     }
 }
