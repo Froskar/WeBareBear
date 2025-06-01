@@ -1,4 +1,4 @@
-package commands.commands;
+package main.commands.commands;
 
 import player.player;
 import main.items.Letter;

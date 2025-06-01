@@ -1,0 +1,60 @@
+
+package commands.commands;
+
+
+public void executeInspect(Player player) {
+    Location location = player.getCurrentLocation();
+    for (Object item : location.getItems()) {
+        if (item instanceof Letter) {
+            Letter letter = (Letter) item;
+            System.out.println(letter.read());
+            player.addToInventory(letter);
+            location.removeItem(letter); // facultatif, si tu veux que la lettre disparaisse de la salle
+            return;
+        }
+    }
+    System.out.println("Il n'y a pas de lettre ici.");
+}
+
+public void executeSay(Player player, WorldMap world) {
+    for (Object item : player.getInventory()) {
+        if (item instanceof Letter) {
+            Letter letter = (Letter) item;
+            Puzzle puzzle = letter.getPuzzle();
+
+            if (puzzle.isSolved()) {
+                System.out.println("Cette énigme a déjà été résolue.");
+                return;
+            }
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Entrez votre réponse à l'énigme : ");
+            String response = scanner.nextLine();
+
+            if (puzzle.trySolve(response)) {
+                System.out.println("Bonne réponse !");
+                unlockLocation(puzzle.getUnlocksLocation(), world);
+                player.removeFromInventory(letter); // facultatif
+            } else {
+                System.out.println("Mauvaise réponse.");
+            }
+            return;
+        }
+    }
+    System.out.println("Vous n’avez aucune lettre à laquelle répondre.");
+}
+
+private void unlockLocation(String name, WorldMap world) {
+    for (int i = 0; i < world.getWorldMap().length; i++) {
+        for (int j = 0; j < world.getWorldMap()[0].length; j++) {
+            Location loc = world.getWorldMap()[i][j];
+            if (loc != null && loc.getName().equalsIgnoreCase(name)) {
+                loc.setState(true);
+                System.out.println("La salle \"" + name + "\" est maintenant accessible !");
+                return;
+            }
+        }
+    }
+    System.out.println("Impossible de trouver la salle à déverrouiller.");
+}
+

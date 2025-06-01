@@ -21,7 +21,6 @@ public class Location implements utils.IPrintable {
     public boolean getState() {
         return this.state;
     }
-    
 
     @Override
     public String getPrintableString() {
@@ -36,7 +35,7 @@ public class Location implements utils.IPrintable {
     this.state = newState;
     //changement de l'état de la location, opened ou closed
 }
+
+    
 }
-
-
 

@@ -35,29 +35,6 @@ public class commandRegistery {
     public List<Map.Entry<String, String>> getCommandes() {
         return commandes;
     }
-    //-------------------------------------------------------------------//
-
-    public List<Map.Entry<String, String>> getCommandesDisponibles(Player player) {
-    List<Map.Entry<String, String>> disponibles = new ArrayList<>(commandes);
-
-    // Ajouter "Inspect" si une lettre est dans la salle
-    for (Object item : player.getCurrentLocation().getItems()) {
-        if (item instanceof Letter) {
-            disponibles.add(new AbstractMap.SimpleEntry<>("Inspect", "Lire la lettre présente dans la pièce."));
-            break;
-        }
-    }
-
-    // Ajouter "Say" si une lettre est dans l'inventaire
-    for (Object item : player.getInventory()) {
-        if (item instanceof Letter) {
-            disponibles.add(new AbstractMap.SimpleEntry<>("Say", "Donner votre réponse à l’énigme de la lettre."));
-            break;
-        }
-    }
-
-    return disponibles;
-}
 
 
 
