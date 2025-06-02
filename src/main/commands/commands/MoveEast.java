@@ -1,11 +1,9 @@
 package main.commands.commands;
 
 import main.commands.Command;
-import main.player.player;
+import main.player.Player;
 import main.world.Location;
 import main.world.WorldMap;
-
-import static main.player.player.getPlayerInstance;
 import static main.world.WorldMap.getWorldInstance;
 
 public class MoveEast extends Command {
@@ -17,7 +15,7 @@ public class MoveEast extends Command {
 
     @Override
     public String execute() {
-        player player = getPlayerInstance();
+        Player player = Player.getInstance();
         WorldMap worldMap = getWorldInstance();
         int row = player.getPosition().getRow();
         int col = player.getPosition().getCol();
@@ -33,7 +31,7 @@ public class MoveEast extends Command {
             return "Cette pièce est verrouillée. Impossible d'y accéder.";
         }
         else {
-            player.getPosition().setCol(col + 1);
+            Player.getInstance().getPosition().setCol(col+1);
             return "Vous êtes maintenant dans : " + nextLocation.getName();
         }
 

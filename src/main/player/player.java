@@ -1,23 +1,35 @@
 package main.player;
+import main.player.Position;
 
-public class player {
-    String name;
-    int LocationRow = 0;
-    int locationColumn = 0;
+public class Player {
+    private final String name;
+    private final Inventory inventory;
+    private final Position position;
 
-    private final Position position = new Position(0, 0);
-
-    public Position getPosition() { return position; }
-
-    public String getName() {
-        return this.name;
-    }
-    private static player INSTANCE;
-    public static player getPlayerInstance() {
+    // Singleton
+    private static Player INSTANCE;
+    public static Player getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new player();
+            INSTANCE = new Player("Héro");
         }
         return INSTANCE;
     }
-}
 
+    public Player(String name) {
+        this.name = name;
+        this.inventory = new Inventory();
+        this.position =  new Position(0, 0);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+}

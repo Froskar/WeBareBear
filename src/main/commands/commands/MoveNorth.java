@@ -2,11 +2,9 @@ package main.commands.commands;
 
 import main.commands.Command;
 import main.player.Position;
-import main.player.player;
+import main.player.Player;
 import main.world.Location;
 import main.world.WorldMap;
-
-import static main.player.player.getPlayerInstance;
 import static main.world.WorldMap.getWorldInstance;
 
 public class MoveNorth extends Command {
@@ -18,10 +16,11 @@ public class MoveNorth extends Command {
 
     @Override
     public String execute() {
-        player player = getPlayerInstance();
+        Player player = Player.getInstance();
         WorldMap worldMap = getWorldInstance();
-        int row = player.getPosition().getRow();
-        int col = player.getPosition().getCol();
+
+        int row = Player.getInstance().getPosition().getRow();
+        int col = Player.getInstance().getPosition().getCol();
 
         // Vérifie que le joueur n'est pas déjà en haut
         if (row == 0) {
@@ -34,7 +33,7 @@ public class MoveNorth extends Command {
             return "Cette pièce est verrouillée. Impossible d'y accéder.";
         }
         else {
-            player.getPosition().setRow(row - 1);
+            Player.getInstance().getPosition().setRow(row-1);
             return "Vous êtes maintenant dans : " + nextLocation.getName();
         }
 

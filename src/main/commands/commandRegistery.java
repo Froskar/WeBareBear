@@ -16,7 +16,8 @@ public class CommandRegistery {
         addCommand("movewest", new MoveWest("moveWest", "Se déplacer à l'ouest"));
         addCommand("moveeast", new MoveEast("moveeast", "Se déplacer à l'est"));
         addCommand("map", new map("map", "Liste des commandes"));
-        addCommand("take", new help("help", "Liste des commandes"));
+        addCommand("take", new help("take", "Prend un objet pour le mettre dans l'inventaire"));
+        addCommand("look", new Look("look", "Permet de voirs quels objets sont dans la pièce où vous vous trouvez"));
     }
 
     // Ajouter une commande
