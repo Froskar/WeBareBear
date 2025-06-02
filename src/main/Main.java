@@ -16,10 +16,10 @@ public class Main {
 
         System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
         Game game = new Game();
-        game.run();
+        Game.getGameInstance().run();
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
-
+/*
         System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
         CommandRegistery registry = new CommandRegistery();
         boolean gameWon = false;
@@ -38,5 +38,5 @@ public class Main {
         }
 
 
-    }
+*/    }
 }

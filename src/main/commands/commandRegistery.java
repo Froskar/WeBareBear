@@ -1,7 +1,10 @@
 package main.commands;
 
 import java.util.*;
+
+import main.commands.commands.MoveNorth;
 import main.commands.commands.help;
+import main.commands.commands.map;
 
 public class CommandRegistery {
     private final HashMap<String, Command> commandes;
@@ -10,8 +13,8 @@ public class CommandRegistery {
         commandes = new HashMap<>();
         // Commandes de base
         addCommand("help", new help("help", "Liste des commandes"));
-        addCommand("move", new help("map", "Liste des commandes"));
-        addCommand("look", new help("help", "Liste des commandes"));
+        addCommand("movenorth", new MoveNorth("movenorth", "Se déplacer au Nord"));
+        addCommand("map", new map("map", "Liste des commandes"));
         addCommand("take", new help("help", "Liste des commandes"));
     }
 

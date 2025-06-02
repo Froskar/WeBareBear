@@ -5,24 +5,19 @@ public class player {
     int LocationRow = 0;
     int locationColumn = 0;
 
-    public player(String name) {
-        this.name = name;
-    }
+    private final Position position = new Position(0, 0);
+
+    public Position getPosition() { return position; }
+
     public String getName() {
         return this.name;
     }
-    public int getLocationRow() {
-        return this.LocationRow;
+    private static player INSTANCE;
+    public static player getPlayerInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new player();
+        }
+        return INSTANCE;
     }
-    public int getLocationColumn() {
-        return this.locationColumn;
-    }
-    public void setLocationRow(int row) {
-        this.LocationRow = row;
-    }
-    public void setLocationColumn(int column) {
-        this.locationColumn = column;
-    }
-
-
 }
+

@@ -2,15 +2,15 @@ package main.world;
 
 import main.Game;
 
-public class worldMap {
-    
-	int rows = 3;
-	int cols = 3;
+public class WorldMap {
 
-	// Créer un tableau bidimensionnel
-	Location[][] tableau = new Location[rows][cols];
+    int rows = 3;
+    int cols = 3;
 
-    private worldMap() {
+    // Créer un tableau bidimensionnel
+    Location[][] tableau = new Location[rows][cols];
+
+    private WorldMap() {
         tableau[0][0] = new Location("Salle de stockage", "Une salle de stockage pour le vin et la nourriture", true);
         tableau[0][1] = new Location("Cave", "Une vielle cave, avec des toiles d'arreignées, des rats courent au moment où vous arrivez", true);
         tableau[0][2] = new Location("Une porte fermée", "C'est une porte, elle est fermée, rien de plus...", false);
@@ -21,11 +21,11 @@ public class worldMap {
         return tableau;
     }
 
-    private static worldMap INSTANCE;
-    public static worldMap getWorldInstance() {
+    private static WorldMap INSTANCE;
+    public static WorldMap getWorldInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new worldMap();
+            INSTANCE = new WorldMap();
         }
         return INSTANCE;}
-}   
+}
 

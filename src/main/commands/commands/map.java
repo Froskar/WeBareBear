@@ -1,14 +1,14 @@
 package main.commands.commands;
 
 import main.commands.Command;
+import main.world.WorldMap;
 import utils.Array2Dprinter;
-import main.world.worldMap;
 
 public class map extends Command {
-    private worldMap worldMap;
+    private final WorldMap worldMap;
     public map(String name, String descr) {
         super(name, descr);
-        this.worldMap = main.world.worldMap.getWorldInstance();
+        this.worldMap = WorldMap.getWorldInstance();
     }
     @Override
     public String execute(){

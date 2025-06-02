@@ -1,6 +1,13 @@
 package main.items;
 
 public abstract class Item {
-    String name;
+    protected String name;
+    protected boolean InIventory;
 
+    public String getName() {
+        return name;
+    }
+    public boolean getInInventory(){
+        return this.InIventory;
+    }
 }

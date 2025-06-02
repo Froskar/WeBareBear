@@ -2,16 +2,16 @@
 package main.commands.commands;
 
 import main.commands.Command;
-import main.world.worldMap;
+import main.world.WorldMap;
 
 public class move extends Command {
 
 
-    private final worldMap worldMap;
+    private final WorldMap worldMap;
 
-    public move(String name, String descr, worldMap worldMap ){
+    public move(String name, String descr, WorldMap worldMap ){
         super(name, descr);
-        this.worldMap = main.world.worldMap.getWorldInstance();
+        this.worldMap = main.world.WorldMap.getWorldInstance();
     }
 /*
 
