@@ -4,5 +4,9 @@ public abstract class Command {
     String name;
     String descr;
 
-    execute();
+    public Command(String name, String descr){
+        this.name = name;
+        this.descr = descr;
+    }
+   public abstract String execute();
 }

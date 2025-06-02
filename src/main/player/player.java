@@ -23,4 +23,6 @@ public class player {
     public void setLocationColumn(int column) {
         this.locationColumn = column;
     }
+
+
 }

@@ -1,12 +1,21 @@
 
-package commands.commands;
+package main.commands.commands;
 
-import main.world.worldMaporldMap;
+import main.commands.Command;
+import main.world.worldMap;
 
-public class move {
+public class move extends Command {
 
 
+    private final worldMap worldMap;
 
+    public move(String name, String descr, worldMap worldMap ){
+        super(name, descr);
+        this.worldMap = main.world.worldMap.getWorldInstance();
+    }
+/*
+
+    //c'est pas getPLayerPosition mais getPlayerLocation
     public void moveNorth() {
         if (worldMap.getPlayerPosition().getY() > 0) {
             worldMap.getPlayerPosition().setY(worldMap.getPlayerPosition().getY() - 1);
@@ -26,7 +35,6 @@ public class move {
     }
 
     public void moveSouth() {
-        
         if (worldMap.getPlayerPosition().getY() > 0) {
             worldMap.getPlayerPosition().setY(worldMap.getPlayerPosition().getY() - 1);
         } else {
@@ -35,7 +43,7 @@ public class move {
 
         Location location = worldMap.getWorldMap()[worldMap.getPlayerPosition().getX()][worldMap.getPlayerPosition().getY()];
         // vérifie si la zone est vérouillée ou non 
-        if(location.state()== false) {
+            if (location.state() == false) {
             System.out.println("You can't move, the location is not accessible.");
             return;
         }
@@ -46,7 +54,6 @@ public class move {
     }
 
     public void moveEast() {
-        
         if (worldMap.getPlayerPosition().getY() > 0) {
             worldMap.getPlayerPosition().setY(worldMap.getPlayerPosition().getY() - 1);
         } else {
@@ -55,7 +62,7 @@ public class move {
         
         Location location = worldMap.getWorldMap()[worldMap.getPlayerPosition().getX()][worldMap.getPlayerPosition().getY()];
         // vérifie si la zone est vérouillée ou non 
-        if(location.state()== false) {
+            if (location.state() == false) {
             System.out.println("You can't move, the location is not accessible.");
             return;
         }
@@ -67,7 +74,6 @@ public class move {
     }
 
     public void moveWest() { 
-        
         if (worldMap.getPlayerPosition().getX() > 0) {
             worldMap.getPlayerPosition().setX(worldMap.getPlayerPosition().getX() - 1);
         } else {
@@ -76,7 +82,7 @@ public class move {
         
         Location location = worldMap.getWorldMap()[worldMap.getPlayerPosition().getX()][worldMap.getPlayerPosition().getY()];
         // vérifie si la zone est vérouillée ou non 
-        if(location.state()== false) {
+            if (location.state() == false) {
             System.out.println("You can't move, the location is not accessible.");
             return;
         }
@@ -85,4 +91,11 @@ public class move {
         setLocation(worldMap.getPlayerPosition().getX(), worldMap.getPlayerPosition().getY());
 
     }
-} 
+ */
+    @Override
+    public String execute() {
+        return "";
+    }
+
+
+}
