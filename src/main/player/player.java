@@ -9,13 +9,13 @@ public class player {
         this.name = name;
     }
     public String getName() {
-        return name;
+        return this.name;
     }
     public int getLocationRow() {
-        return LocationRow;
+        return this.LocationRow;
     }
     public int getLocationColumn() {
-        return locationColumn;
+        return this.locationColumn;
     }
     public void setLocationRow(int row) {
         this.LocationRow = row;

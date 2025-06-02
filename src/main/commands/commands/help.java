@@ -5,7 +5,7 @@ import main.commands.Command;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import main.commands.commandRegistery;
+import main.commands.CommandRegistery;
 
 
 public class help extends Command {
@@ -16,7 +16,7 @@ public class help extends Command {
 
     @Override
     public String execute() {
-        HashMap<String, Command> commandes = commandRegistery.getCommandInstance().getCommandRegistery();
+        HashMap<String, Command> commandes = CommandRegistery.getCommandInstance().getCommandRegistery();
 
         String output = "Commandes disponibles :\n";
 

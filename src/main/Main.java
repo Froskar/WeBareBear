@@ -1,7 +1,7 @@
 package main;
 
 
-import main.commands.commandRegistery;
+import main.commands.CommandRegistery;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
@@ -21,7 +21,7 @@ public class Main {
 
 
         System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
-        commandRegistery registry = new commandRegistery();
+        CommandRegistery registry = new CommandRegistery();
         boolean gameWon = false;
         Scanner scanner = new Scanner(System.in);
         while (gameWon != true){
@@ -30,7 +30,7 @@ public class Main {
             inputLowercase = inputLowercase.toLowerCase();
 
             if (inputLowercase != null) {
-                System.out.println(commandRegistery.getCommandInstance().getCommand(inputLowercase).execute());
+                System.out.println(CommandRegistery.getCommandInstance().getCommand(inputLowercase).execute());
             } else {
                 System.out.println("Commande inconnue.");
             }

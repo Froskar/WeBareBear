@@ -96,6 +96,4 @@ public class move extends Command {
     public String execute() {
         return "";
     }
-
-
 }

@@ -3,14 +3,14 @@ package main.commands;
 import java.util.*;
 import main.commands.commands.help;
 
-public class commandRegistery {
+public class CommandRegistery {
     private final HashMap<String, Command> commandes;
 
-    public commandRegistery() {
+    public CommandRegistery() {
         commandes = new HashMap<>();
         // Commandes de base
         addCommand("help", new help("help", "Liste des commandes"));
-        addCommand("move", new help("help", "Liste des commandes"));
+        addCommand("move", new help("map", "Liste des commandes"));
         addCommand("look", new help("help", "Liste des commandes"));
         addCommand("take", new help("help", "Liste des commandes"));
     }
@@ -34,10 +34,10 @@ public class commandRegistery {
         return commandes;
     }
 
-    private static commandRegistery INSTANCE;
-    public static commandRegistery getCommandInstance() {
+    private static CommandRegistery INSTANCE;
+    public static CommandRegistery getCommandInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new commandRegistery();
+            INSTANCE = new CommandRegistery();
         }
         return INSTANCE;
     }
