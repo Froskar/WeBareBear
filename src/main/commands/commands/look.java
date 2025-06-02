@@ -1,5 +1,5 @@
 package main.commands.commands;
 
-public class inspect {
+public class Look {
 
 }

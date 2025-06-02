@@ -1,6 +1,6 @@
 package main.items;
 
-public class Puzzle {
+public class Puzzle extends Item {
     private String question;
     private String answer;
     private boolean solved;

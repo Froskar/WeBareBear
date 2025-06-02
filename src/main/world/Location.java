@@ -1,42 +1,55 @@
 package main.world;
 
-public class Location implements utils.IPrintable {
+import main.items.Item;
+import utils.IPrintable;
 
-    private String name;
-    private String description;
-    private boolean state;
+import java.util.HashMap;
+
+public class Location implements IPrintable {
+
+    private final String name;
+    private final String description;
+    private final boolean state;
+    private final HashMap<String, Item> items; // clef = nom de l'item
 
     public Location(String name, String description, boolean state) {
         this.name = name;
         this.description = description;
         this.state = state;
+        this.items = new HashMap<>();
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
+
     public String getDescription() {
-        return this.description;
+        return description;
     }
+
     public boolean getState() {
-        return this.state;
+        return state;
     }
-    
+
+    public HashMap<String, Item> getItems() {
+        return items;
+    }
+
+    public void addItem(Item item) {
+        items.put(item.getName(), item);
+    }
+
+    public Item removeItem(String itemName) {
+        return items.remove(itemName);
+    }
 
     @Override
     public String getPrintableString() {
-        return this.getName();
+        return name;
     }
+
     @Override
     public boolean isGrayedOut() {
-        return false;
+        return !state;
     }
-
-    public void setState(boolean newState) {
-    this.state = newState;
-    //changement de l'état de la location, opened ou closed
 }
-}
-
-
-

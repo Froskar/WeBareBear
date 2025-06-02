@@ -1,38 +1,39 @@
 package main.commands;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import main.Game;
+import java.util.*;
+
+import main.commands.commands.MoveNorth;
 import main.commands.commands.help;
 import main.commands.commands.map;
 
-public class commandRegistery {
+public class CommandRegistery {
+    private final HashMap<String, Command> commandes;
 
-    private final List<Map.Entry<String, String>> commandes;
-
-    public commandRegistery() {
-        commandes = new ArrayList<>();
+    public CommandRegistery() {
+        commandes = new HashMap<>();
         // Commandes de base
-        addCommand("Help", "Affiche la liste de toutes les commandes disponibles.");
-        addCommand("Move", "Démarre une nouvelle partie.");
-        addCommand("Look", "Sauvegarde la partie actuelle.");
-        addCommand("Take", "Quitte le jeu.");
+        addCommand("help", new help("help", "Liste des commandes"));
+        addCommand("movenorth", new MoveNorth("movenorth", "Se déplacer au Nord"));
+        addCommand("map", new map("map", "Liste des commandes"));
+        addCommand("take", new help("help", "Liste des commandes"));
     }
 
     // Ajouter une commande
-    public void addCommand(String nom, String description) {
-        commandes.add(new AbstractMap.SimpleEntry<>(nom, description));
+    public void addCommand(String nom, Command commande) {
+        commandes.put(nom, commande);
     }
 
-    // Supprimer une commande
+    //suprimer une commande
     public void removeCommand(String nom) {
-        commandes.removeIf(commande -> commande.getKey().equalsIgnoreCase(nom));
-        System.out.println("Commande '" + nom + "' supprimée.");
+        if (commandes.containsKey(nom)) {
+            commandes.remove(nom);
+            System.out.println("Commande '" + nom + "' supprimée.");
+        } else {
+            System.out.println("Commande '" + nom + "' introuvable.");
+        }
     }
 
-    public List<Map.Entry<String, String>> getCommandes() {
+    public HashMap<String, Command> getCommandRegistery() {
         return commandes;
     }
     //-------------------------------------------------------------------//
@@ -59,32 +60,14 @@ public class commandRegistery {
     return disponibles;
 }
 
-
-
-
-
-
-
-
-    public void commandChoose() {
-        Game game = new Game();
-        String command = game.getCommandInput();
-        switch (command.toLowerCase()) {
-            case "map" -> {
-                map mapInstance = new map();
-                mapInstance.displayMap();
-            }
-            case "help" -> {
-                help helpInstance = new help();
-                helpInstance.displayHelp();
-            }
-            default -> {
-                System.out.println("Unknown command: " + command);
-            }
+    private static CommandRegistery INSTANCE;
+    public static CommandRegistery getCommandInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new CommandRegistery();
         }
+        return INSTANCE;
     }
-    
-
-    
-    
+    public Command getCommand (String input){
+        return this.commandes.get(input);
+    }
 }

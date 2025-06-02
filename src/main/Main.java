@@ -1,29 +1,41 @@
 package main;
 
 
-import main.commands.commandRegistery;
+import main.commands.CommandRegistery;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;
+import main.commands.Command;
+
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         System.out.println(StringStyling.StyleString("Starting...", Style.ITALIC, Color.BLACK));
         Game game = new Game();
-        game.run();
+        Game.getGameInstance().run();
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
 
-        //        worldMap map = new worldMap();
-         System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
-        commandRegistery registry = new commandRegistery();
+/*
+        System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
+        CommandRegistery registry = new CommandRegistery();
         boolean gameWon = false;
-        while (gameWon == false) {
-       
-        registry.commandChoose();
+        Scanner scanner = new Scanner(System.in);
+        while (gameWon != true){
+            System.out.print("Entrez une commande : ");
+            String inputLowercase = scanner.nextLine();
+            inputLowercase = inputLowercase.toLowerCase();
+
+            if (inputLowercase != null) {
+                System.out.println(CommandRegistery.getCommandInstance().getCommand(inputLowercase).execute());
+            } else {
+                System.out.println("Commande inconnue.");
+            }
 
         }
 
 
-    }
+*/    }
 }
