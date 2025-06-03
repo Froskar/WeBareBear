@@ -1,16 +1,18 @@
 package main.items;
 
 public class Puzzle extends Item {
-    private String question;
-    private String answer;
+    private final String question;
+    private final String answer;
+    private final String unlocksLocation;
     private boolean solved;
-    private String unlocksLocation;
 
-    public Puzzle(String question, String answer, String unlocksLocation) {
+    public Puzzle(String question, String answer, String unlocksLocation, String name, String description) {
+        super(name, description);
+        this.name = "énigme";
         this.question = question;
         this.answer = answer.toLowerCase();
-        this.solved = false;
         this.unlocksLocation = unlocksLocation;
+        this.solved = false;
     }
 
     public String getQuestion() {
@@ -23,7 +25,7 @@ public class Puzzle extends Item {
 
     public boolean trySolve(String response) {
         if (response.toLowerCase().equals(answer)) {
-            this.solved = true;
+            solved = true;
             return true;
         }
         return false;
@@ -32,5 +34,9 @@ public class Puzzle extends Item {
     public String getUnlocksLocation() {
         return unlocksLocation;
     }
+
+    @Override
+    public String getDescription() {
+        return solved ? "Cette énigme a été résolue." : "Une énigme à résoudre : " + question;
+    }
 }
-// enigme du jeu

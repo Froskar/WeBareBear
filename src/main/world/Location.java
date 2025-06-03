@@ -9,7 +9,7 @@ public class Location implements IPrintable {
 
     private final String name;
     private final String description;
-    private final boolean state;
+    private boolean state;
     private final HashMap<String, Item> items; // clef = nom de l'item
 
     public Location(String name, String description, boolean state) {
@@ -31,16 +31,37 @@ public class Location implements IPrintable {
         return state;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
     public HashMap<String, Item> getItems() {
         return items;
     }
 
     public void addItem(Item item) {
-        items.put(item.getName(), item);
+        if (item.getName() != null) {
+            items.put(item.getName(), item);
+        } else {
+            System.out.println("Tentative d'ajout d'un item sans nom !");
+        }
     }
-
     public Item removeItem(String itemName) {
         return items.remove(itemName);
+    }
+
+    public boolean hasItems() {
+        return !items.isEmpty();
+    }
+    public String listItems() {
+        if (items.isEmpty()) {
+            return "Il n'y a aucun objet ici.";
+        }
+
+        StringBuilder sb = new StringBuilder("Objets présents :\n");
+        for (String itemName : items.keySet()) {
+            sb.append(" - ").append(itemName).append("\n");
+        }
+        return sb.toString();
     }
 
     @Override
@@ -52,4 +73,6 @@ public class Location implements IPrintable {
     public boolean isGrayedOut() {
         return !state;
     }
+
+
 }

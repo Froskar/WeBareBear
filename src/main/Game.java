@@ -2,7 +2,7 @@ package main;
 
 import main.commands.Command;
 import main.commands.CommandRegistery;
-import main.player.player;
+import main.player.Player;
 import main.world.WorldMap;
 
 import java.util.Scanner;
@@ -10,20 +10,20 @@ import java.util.Scanner;
 public class Game {
 
     private boolean isRunning;
-    private final player player;
+    private final Player player;
     private final WorldMap worldMap;
     private final CommandRegistery registry;
 
     public Game() {
-        System.out.println("Initializing game...");
         this.isRunning = true;
-        this.player = new player();
+        this.player = new Player("Hero");
         this.worldMap = WorldMap.getWorldInstance();
         this.registry = CommandRegistery.getCommandInstance();
     }
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Initializing game...");
         System.out.println("Bienvenue dans le jeu ! Tapez 'help' pour la liste des commandes.");
 
         while (isRunning) {

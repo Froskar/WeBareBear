@@ -1,15 +1,26 @@
 package main.items;
 
 public class Letter extends Item {
-    private Puzzle puzzle;
+    private final Puzzle puzzle;
+    private  String contenu;
 
-    public Letter(Puzzle puzzle) {
+    public Letter(Puzzle puzzle,String name, String description, String contenu) {
+        super(name, description);
+        this.name = name;
         this.puzzle = puzzle;
+        this.contenu = contenu;
     }
+
     public Puzzle getPuzzle() {
         return puzzle;
     }
+
     public String read() {
-        return puzzle.getQuestion();
+        return this.contenu;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Une lettre froissée";
     }
 }
