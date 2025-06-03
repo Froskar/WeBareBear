@@ -20,15 +20,20 @@ public class Inventory {
         return items.remove(itemName);
     }
 
-    public Item getItem(String itemName) {
-        return items.get(itemName);
+    public Item getItem(String name) {
+        for (String key : items.keySet()) {
+            if (key.equalsIgnoreCase(name)) {
+                return items.get(key);
+            }
+        }
+        return null;
     }
 
     public boolean hasItem(String itemName) {
         return items.containsKey(itemName);
     }
 
-    public void listItems() {
+    public String listItems() {
         if (items.isEmpty()) {
             System.out.println("Votre inventaire est vide.");
         } else {
@@ -37,5 +42,6 @@ public class Inventory {
                 System.out.println("- " + key);
             }
         }
+        return null;
     }
 }

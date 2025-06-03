@@ -23,6 +23,8 @@ public class MoveWest extends Command {
         // Vérifie que le joueur n'est pas déjà en bas
         if (col == 0) {
             return "Vous ne pouvez pas aller plus à l'ouest.";
+        } else if (col == 1 && row == 2) {
+            return "Vous ne pouvez pas aller ici";
         }
 
         // Vérifie si la salle vers laquelle on veut aller est accessible

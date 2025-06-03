@@ -6,7 +6,8 @@ public class Puzzle extends Item {
     private final String unlocksLocation;
     private boolean solved;
 
-    public Puzzle(String question, String answer, String unlocksLocation) {
+    public Puzzle(String question, String answer, String unlocksLocation, String name, String description) {
+        super(name, description);
         this.name = "énigme";
         this.question = question;
         this.answer = answer.toLowerCase();

@@ -15,7 +15,6 @@ public class Game {
     private final CommandRegistery registry;
 
     public Game() {
-        System.out.println("Initializing game...");
         this.isRunning = true;
         this.player = new Player("Hero");
         this.worldMap = WorldMap.getWorldInstance();
@@ -24,6 +23,7 @@ public class Game {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Initializing game...");
         System.out.println("Bienvenue dans le jeu ! Tapez 'help' pour la liste des commandes.");
 
         while (isRunning) {

@@ -3,8 +3,8 @@ package main.items;
 public class Key extends Item {
     private final String locationToUnlock;
 
-    public Key(String locationToUnlock) {
-        this.name = "clé";
+    public Key(String locationToUnlock, String name, String description) {
+        super(name, description);
         this.locationToUnlock = locationToUnlock;
     }
 
@@ -14,6 +14,6 @@ public class Key extends Item {
 
     @Override
     public String getDescription() {
-        return "Une clé qui semble correspondre à : " + locationToUnlock;
+        return description + " (Permet de déverrouiller : " + locationToUnlock + ")";
     }
 }

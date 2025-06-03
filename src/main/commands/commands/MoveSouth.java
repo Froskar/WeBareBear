@@ -28,7 +28,7 @@ public class MoveSouth extends Command {
         }
 
         // Vérifie si la salle vers laquelle on veut aller est accessible
-        Location nextLocation = worldMap.getWorldMap()[row + 1][col];
+        Location nextLocation = worldMap.getWorldMap()[row+1][col];
         if (!nextLocation.getState()) {
             return "Cette pièce est verrouillée. Impossible d'y accéder.";
         }

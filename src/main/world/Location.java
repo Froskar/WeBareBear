@@ -9,7 +9,7 @@ public class Location implements IPrintable {
 
     private final String name;
     private final String description;
-    private final boolean state;
+    private boolean state;
     private final HashMap<String, Item> items; // clef = nom de l'item
 
     public Location(String name, String description, boolean state) {
@@ -31,6 +31,9 @@ public class Location implements IPrintable {
         return state;
     }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
     public HashMap<String, Item> getItems() {
         return items;
     }
