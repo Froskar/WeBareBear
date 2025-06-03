@@ -36,7 +36,7 @@ public class MoveEast extends Command {
         }
         else {
             Player.getInstance().getPosition().setCol(col+1);
-            return "Vous êtes maintenant dans : " + nextLocation.getName();
+            return "Vous êtes maintenant dans :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
         }
 
     }

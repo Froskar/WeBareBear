@@ -34,7 +34,7 @@ public class MoveSouth extends Command {
         }
         else {
             Player.getInstance().getPosition().setRow(row+1);
-            return "Vous êtes maintenant dans : " + nextLocation.getName();
+            return "Vous êtes maintenant dans :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
         }
     }
 }
