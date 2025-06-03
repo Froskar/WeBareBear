@@ -8,5 +8,13 @@ public abstract class Command {
         this.name = name;
         this.descr = descr;
     }
+
+    public String getDescription() {
+        return descr;
+    }
+
+    public String getName() {
+        return name;
+    }
    public abstract String execute();
 }

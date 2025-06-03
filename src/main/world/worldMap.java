@@ -29,38 +29,41 @@ public class WorldMap {
         tableau[2][3] = new Location("Salle de torture", "Une salle de torture, avec des instruments de torture accrochés au mur.", false);
 
 
-        Puzzle puzzle1 = new Puzzle("énigme_1", "Mon premier est une lettre de l'alphabet\n" +
+        Puzzle puzzle1 = new Puzzle("énigme_1",
+                "Mon premier est une lettre de l'alphabet\n" +
                 "Mon deuxième est un oiseau qui aime tout ce qui brille. \n" +
                 "Mon troisième est un talent particulier que l'on peut avoir. \n" +
                 "Mon tout a beaucoup de travail le jour de la Saint-Valentin",
-                "dragon", "Salle de torture");
-        Puzzle puzzle2 = new Puzzle("énigme_2", "Qu'est-ce qui peut être dans la mer et dans le ciel ?", "Une étoile", "Cachot");
+                "dragon",
+                "Salle de torture");
+
+        Puzzle puzzle2 = new Puzzle("énigme_2",
+                "Qu'est-ce qui peut être dans la mer et dans le ciel ?",
+                "Une étoile",
+                "Cachot");
 
         Puzzle puzzle3 = new Puzzle("énigme_3",
                 "canards se baignent dans mon premier. \n" +
                 "Mon deuxième est l'inverse de tard. \n" +
                 "Mon tout sert à enfoncer des clous",
-                "Marteau", "Salle de réception");
+                "Marteau",
+                "Salle de réception");
 
-        //  Création de 4 lettres associées à chacune de ces énigmes
-        Letter letter1 = new Letter("lettre_1", puzzle1);
-        Letter letter2 = new Letter("lettre_2", puzzle2);
-        Letter letter3 = new Letter("lettre_3", puzzle3);
 
-        //  Création de 4 clés déverrouillant 4 salles différentes
-        Key key1 = new Key("clé_trône", "Salle de torture");
-        Key key2 = new Key("clé_bibliothèque", "Cachot");
-        Key key3 = new Key("clé_chambre", "Salle de réception");
+        //création des clés
+        Key key1 = new Key("clé_torture", "Salle de torture");
+        Key key2 = new Key("clé_cachot", "Cachot");
+        Key key3 = new Key("clé_reception", "Salle de réception");
+
+
+        Letter letter1 = new Letter("lettre_1",puzzle1, key1);
+        Letter letter2 = new Letter("lettre_2", puzzle2, key2);
+        Letter letter3 = new Letter("lettre_3", puzzle3, key3);
 
         //  Ajout des objets dans des locations
         tableau[0][0].addItem(letter1);
         tableau[0][1].addItem(letter2);
         tableau[1][1].addItem(letter3);
-
-
-        tableau[0][0].addItem(key1);
-        tableau[0][1].addItem(key2);
-        tableau[1][1].addItem(key3);
     }
 
     public Location[][] getWorldMap() {

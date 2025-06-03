@@ -16,25 +16,5 @@ public class Main {
         Game game = new Game();
         Game.getGameInstance().run();
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
-
-/*
-        System.out.println(StringStyling.StyleString("Welcome to the game! Type 'help' for a list of commands.", Style.BOLD, Color.GREEN));
-        CommandRegistery registry = new CommandRegistery();
-        boolean gameWon = false;
-        Scanner scanner = new Scanner(System.in);
-        while (gameWon != true){
-            System.out.print("Entrez une commande : ");
-            String inputLowercase = scanner.nextLine();
-            inputLowercase = inputLowercase.toLowerCase();
-
-            if (inputLowercase != null) {
-                System.out.println(CommandRegistery.getCommandInstance().getCommand(inputLowercase).execute());
-            } else {
-                System.out.println("Commande inconnue.");
-            }
-
-        }
-
-
-*/    }
+    }
 }

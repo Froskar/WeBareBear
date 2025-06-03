@@ -1,12 +1,9 @@
 package main.commands.commands;
 
 import main.commands.Command;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import main.commands.CommandRegistery;
 
+import java.util.HashMap;
 
 public class help extends Command {
 
@@ -16,12 +13,16 @@ public class help extends Command {
 
     @Override
     public String execute() {
-        HashMap<String, Command> commandes = CommandRegistery.getCommandInstance().getCommandRegistery();
+        HashMap<String, Command> commandes = CommandRegistery
+                .getCommandInstance()
+                .getCommandRegistery();
 
         String output = "Commandes disponibles :\n";
 
         for (String nom : commandes.keySet()) {
-            output += " - " + nom + "\n";
+            Command cmd = commandes.get(nom);
+            String description = cmd.getDescription();
+            output += " - " + nom + " : " + description + "\n";
         }
 
         return output;
