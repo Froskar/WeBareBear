@@ -1,14 +1,14 @@
 package main.items;
 
+/**
+ * Une lettre contient une énigme. Quand on la lit, on affiche la question.
+ */
 public class Letter extends Item {
     private final Puzzle puzzle;
-    private  String contenu;
 
-    public Letter(Puzzle puzzle,String name, String description, String contenu) {
-        super(name, description);
-        this.name = name;
+    public Letter(String name, Puzzle puzzle) {
+        this.name = name; // ex. "lettre_1", "lettre_2", etc.
         this.puzzle = puzzle;
-        this.contenu = contenu;
     }
 
     public Puzzle getPuzzle() {
@@ -16,11 +16,11 @@ public class Letter extends Item {
     }
 
     public String read() {
-        return this.contenu;
+        return puzzle.getQuestion();
     }
 
     @Override
     public String getDescription() {
-        return "Une lettre froissée";
+        return "Une lettre froissée. Elle contient l'énigme :\n" + puzzle.getQuestion();
     }
 }

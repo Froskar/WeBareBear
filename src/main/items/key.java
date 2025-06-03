@@ -3,9 +3,9 @@ package main.items;
 public class Key extends Item {
     private final String locationToUnlock;
 
-    public Key(String locationToUnlock, String name, String description) {
-        super(name, description);
-        this.locationToUnlock = locationToUnlock;
+    public Key(String name, String locationToUnlock) {
+        this.name = name;                    // ex. "clé_trône", "clé_cave", etc.
+        this.locationToUnlock = locationToUnlock; // nom de la Location à déverrouiller
     }
 
     public String getLocationToUnlock() {
@@ -14,6 +14,6 @@ public class Key extends Item {
 
     @Override
     public String getDescription() {
-        return description + " (Permet de déverrouiller : " + locationToUnlock + ")";
+        return "Une clé ouvrant la salle « " + locationToUnlock + " ».";
     }
 }

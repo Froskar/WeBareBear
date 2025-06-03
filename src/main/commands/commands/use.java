@@ -23,13 +23,13 @@ public class Use extends Command {
         System.out.print("Quel objet voulez-vous utiliser ? > ");
         String itemName = scanner.nextLine().trim();
 
-        // 1. Récupérer l'item, en ignorant la casse
+        // Récupérer l'item, en ignorant la casse
         Item item = player.getInventory().getItem(itemName);
         if (item == null) {
             return "Vous ne possédez pas cet objet.";
         }
 
-        // 2. Si c'est une Key, on déverrouille la salle correspondante
+        // Si c'est une Key, on déverrouille la salle correspondante
         if (item instanceof Key key) {
             String targetLocationName = key.getLocationToUnlock();
             Location[][] map = WorldMap.getWorldInstance().getWorldMap();
@@ -54,12 +54,12 @@ public class Use extends Command {
             return "Aucune salle ne correspond à cette clé.";
         }
 
-        // 3. Si c'est une lettre, on l'affiche (éventuellement on pourrait ajouter un puzzle)
+        //  Si c'est une lettre, on l'affiche (éventuellement on pourrait ajouter un puzzle)
         if (item instanceof Letter letter) {
             return "Vous lisez la lettre :\n" + letter.read();
         }
 
-        // 4. Autres objets (puzzle, etc.) : si vous voulez gérer un 'solve', faites-le ici.
+        //  Autres objets (puzzle, etc.) : si vous voulez gérer un 'solve', faites-le ici.
         return "Cet objet ne peut pas être utilisé.";
     }
 }

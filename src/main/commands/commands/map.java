@@ -1,5 +1,6 @@
 package main.commands.commands;
 
+import main.Game;
 import main.commands.Command;
 import main.player.Player;
 import main.world.WorldMap;
@@ -14,8 +15,7 @@ public class map extends Command {
     }
     @Override
     public String execute(){
-        String affichage = Array2Dprinter.print2DArray(worldMap.getWorldMap(), Player.getInstance().getPosition().getRow(), Player.getInstance().getPosition().getCol());
-        return affichage;
+        return Array2Dprinter.print2DArray(WorldMap.getWorldInstance().getWorldMap(), Player.getInstance().getPosition().getRow(), Player.getInstance().getPosition().getCol());
     }
 }
 
