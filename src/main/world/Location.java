@@ -53,9 +53,9 @@ public class Location implements IPrintable {
 
     public String listItems() {
         if (items.isEmpty()) {
-            return "Il n'y a aucun objet ici.";
+            return "There's nothing to see here";
         }
-        StringBuilder sb = new StringBuilder("Objets présents :\n");
+        StringBuilder sb = new StringBuilder("Objects present :\n");
         for (Map.Entry<String, Item> entry : items.entrySet()) {
             sb.append(" - ").append(entry.getKey()).append("\n");
         }

@@ -21,18 +21,18 @@ public class Teleport extends Command {
         // 1) Récupération des locations déjà visitées
         Set<Location> visited = player.getVisitedLocations();
         if (visited.isEmpty()) {
-            return "Vous n'avez encore visité aucune salle. Impossible de vous téléporter.";
+            return "You haven't visited any of the rooms yet. You can't teleport.";
         }
 
         // Afficher la liste des noms des salles visitées
-        System.out.println("Lieux visités :");
+        System.out.println("Places visited :");
         for (Location loc : visited) {
             System.out.println(" - " + loc.getName());
         }
 
         // 2) Demander à l'utilisateur où il veut se téléporter
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Où voulez-vous vous téléporter ? ");
+        System.out.print("Where do you want to teleport to? ");
         String cible = scanner.nextLine().trim();
 
         // 3) Chercher dans 'visited' une location au nom exact
@@ -42,14 +42,14 @@ public class Teleport extends Command {
                 // On suppose que Player possède methods setPosition(row, col) ou setLocationRow/Col
                 int[] coords = WorldMap.getLocationCoordinates(loc.getName());
                 if (coords == null) {
-                    return "Erreur interne : coordonnées introuvables pour \"" + cible + "\".";
+                    return "Internal error: coordinates not found for \"" + cible + "\".";
                 }
                 player.getPosition().setRow(coords[0]);
                 player.getPosition().setCol(coords[1]);
-                return "Téléportation réussie vers : " + loc.getName();
+                return "Successful teleportation to : " + loc.getName();
             }
         }
 
-        return "Vous n'avez jamais visité \"" + cible + "\". Impossible de vous y téléporter.";
+        return "You've never visited \"" + cible + "\". You can't teleport there.";
     }
 }

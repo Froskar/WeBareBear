@@ -23,7 +23,7 @@ public class Look extends Command {
         Location currentLocation = worldMap.getWorldMap()[row][col];
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Vous êtes dans : ").append(currentLocation.getName()).append("\n");
+        sb.append("You are in : ").append(currentLocation.getName()).append("\n");
         sb.append(currentLocation.getDescription()).append("\n\n");
         sb.append(currentLocation.listItems());
 

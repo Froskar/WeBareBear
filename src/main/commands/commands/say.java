@@ -9,12 +9,6 @@ import main.items.Puzzle;
 import main.items.Key;
 
 import java.util.Scanner;
-
-/**
- * The SAY command allows the player to speak the answer to a riddle
- * contained in a Letter. If the answer is correct, the associated Key
- * is automatically added to the player's inventory.
- */
 public class Say extends Command {
 
     public Say(String name, String descr, boolean commandState) {

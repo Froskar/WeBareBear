@@ -44,9 +44,9 @@ public class Puzzle extends Item {
     @Override
     public String getDescription() {
         if (solved) {
-            return "Énigme \"" + name + "\" déjà résolue.";
+            return "Enigma \"" + name + "\" already resolved.";
         } else {
-            return "Énigme \"" + name + "\" : " + question;
+            return "Enigma \"" + name + "\" : " + question;
         }
     }
 }

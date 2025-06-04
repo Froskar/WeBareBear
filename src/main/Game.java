@@ -21,10 +21,14 @@ public class Game {
         this.registry = CommandRegistery.getCommandInstance();
     }
 
+    public void setIsRunning(Boolean state){
+        this.isRunning = state;
+    }
+
     public void run() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Initializing game...");
-        System.out.println("Bienvenue dans le jeu ! Tapez 'help' pour la liste des commandes.");
+        System.out.println("Welcome to the game! Type “help” for the list of commands.");
 
         while (isRunning) {
             System.out.print("> ");
@@ -38,13 +42,17 @@ public class Game {
                     System.out.println(output);
                 }
             } else {
-                System.out.println("Commande inconnue. Tapez 'help' pour voir les commandes disponibles.");
+                System.out.println("Unknown command. Type “help” to see the commands available.");
             }
 
             // Optionnel : arrêt du jeu si la commande est "quit"
             if (input.equals("quit")) {
                 isRunning = false;
-                System.out.println("Fin du jeu.");
+                System.out.println("End of game.");
+            }
+            if (Player.getInstance().getPosition().getCol() == 0 && Player.getInstance().getPosition().getRow() == 2){
+                isRunning = false;
+                System.out.println("Vous avez terminé le jeu");
             }
         }
     }

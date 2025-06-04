@@ -17,7 +17,7 @@ public class help extends Command {
                 .getCommandInstance()
                 .getCommandRegistery();
 
-        String output = "Commandes disponibles :\n";
+        String output = "Available commands :\n";
 
         for (String nom : commandes.keySet()) {
             Command cmd = commandes.get(nom);

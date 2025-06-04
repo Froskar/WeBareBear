@@ -24,11 +24,11 @@ public class Take extends Command {
         Inventory inventory = player.getInventory();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Quel objet voulez-vous prendre ? ");
+        System.out.print("Which item do you want to take? ");
         String itemName = scanner.nextLine().trim();
 
         if (!currentLocation.getItems().containsKey(itemName)) {
-            return "Cet objet n’est pas présent ici.";
+            return "This object is not available here.";
         }
         Item item = currentLocation.removeItem(itemName);
         inventory.addItem(item);
@@ -38,8 +38,8 @@ public class Take extends Command {
             if (commandTeleport != null) {
                 commandTeleport.setCommandState(true);
             }
-            return "Vous avez récupéré : " + item.getName() + ". La commande teleport est maintenant disponible !";
+            return "You have picked up : " + item.getName() + ". The teleport command is now available!";
         }
-        return "Vous avez récupéré : " + item.getName();
+        return "You have picked up : " + item.getName();
     }
 }

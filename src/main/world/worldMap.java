@@ -1,10 +1,7 @@
 package main.world;
 
 import main.Game;
-import main.items.Crystal;
-import main.items.Key;
-import main.items.Letter;
-import main.items.Puzzle;
+import main.items.*;
 
 public class WorldMap {
 
@@ -16,57 +13,53 @@ public class WorldMap {
 
 
     private WorldMap() {
-        tableau[0][0] = new Location("Salle de stockage", "Une salle de stockage pour le vin et la nourriture", true);
-        tableau[0][1] = new Location("Couloir étroit", "Un couloir étroit, on peine a s'y faufiler", true);
-        tableau[0][2] = new Location("Salle du trône", "Une salle gigantesque, pleine de reliques d'un ancien temps.", true);
-        tableau[0][3] = new Location("Cachot", "Un cachot sombre et humide, il reste encore des os et l'amibance est glaçante...", false);
-        tableau[1][0] = new Location("Cave", "Une vielle cave, avec des toiles d'arreignées, des rats courent au moment où vous arrivez", true);
-        tableau[1][1] = new Location("Trou dans le sol", "BAM ! Vous êtes tombés dans un trou. Heureusement, une corde vous permet d'en ressortir", true);
-        tableau[1][2] = new Location("Salle de réception", "Des squelettes autour d'une table, ils devaient bien festoyer à l'époque.", false);
-        tableau[1][3] = new Location("Couloir principal", "Un grand couloir, sur les côtés sont allignés des statues de gardes imposantes", true);
-        tableau[2][0] = new Location("Une porte fermée", "C'est une porte, elle est fermée, rien de plus...", false);
-        tableau[2][1] = new Location("Passage crasseux", "BEURK ! Un passage avec des toiles d'araignées, de l'eau croupie s'infiltre dans vos chaussures", true);
-        tableau[2][2] = new Location("Escaliers", "Super, des escaliers ! Quelques marches sont endommagés mais vous parvenez à les enjamber", true);
-        tableau[2][3] = new Location("Salle de torture", "Une salle de torture, avec des instruments de torture accrochés au mur.", false);
-
+        tableau[0][0] = new Location("Storage room", "A wine and food storage room.", true);
+        tableau[0][1] = new Location("Narrow hallway", "A narrow hallway that's hard to squeeze through.", true);
+        tableau[0][2] = new Location("Throne room", "A gigantic room, full of relics from an ancient time.", true);
+        tableau[0][3] = new Location("Cachot", "A dark, damp dungeon, where there are still bones and the amoebae are chilling...", false);
+        tableau[1][0] = new Location("Cave", "An old cave, with cobwebs and rats running around when you arrive.", true);
+        tableau[1][1] = new Location("Hole in the ground", "BAM ! You've fallen into a hole. Fortunately, there's a rope to pull you out.", true);
+        tableau[1][2] = new Location("Reception room", "Skeletons around a table, they must have been feasting in those days.", false);
+        tableau[1][3] = new Location("Main corridor", "A large corridor, with imposing statues of guards lining the sides.", true);
+        tableau[2][0] = new Location("A locked door", "You are in a secret room filled with magical items... But you see a door at the end, you feel a breeze through the door. Maybe you can escape !", false);
+        tableau[2][1] = new Location("Dirty passageway", "BEURK ! A passageway with cobwebs, rotting water seeping into your shoes.", true);
+        tableau[2][2] = new Location("Straicases", "Great, stairs! A few steps are damaged but you manage to climb over them.", true);
+        tableau[2][3] = new Location("Torture chamber", "A torture chamber, with instruments of torture hanging on the walls and blood drying on the floor.", false);
 
         Puzzle puzzle1 = new Puzzle("énigme_1",
-                "Mon premier est une lettre de l'alphabet\n" +
-                "Mon deuxième est un oiseau qui aime tout ce qui brille. \n" +
-                "Mon troisième est un talent particulier que l'on peut avoir. \n" +
-                "Mon tout a beaucoup de travail le jour de la Saint-Valentin",
-                "dragon",
-                "Salle de torture");
+                "3 fish are in a bucket, one of them dies, how many are left?",
+                "3",
+                "Torture chamber");
 
         Puzzle puzzle2 = new Puzzle("énigme_2",
-                "Qu'est-ce qui peut être dans la mer et dans le ciel ?",
-                "Une étoile",
+                "What can be in the sea and in the sky?",
+                "Star",
                 "Cachot");
 
         Puzzle puzzle3 = new Puzzle("énigme_3",
-                "canards se baignent dans mon premier. \n" +
-                "Mon deuxième est l'inverse de tard. \n" +
-                "Mon tout sert à enfoncer des clous",
-                "Marteau",
-                "Salle de réception");
+                "Which is lighter: two kilos of stone or two kilos of sweets?",
+                "None",
+                "Reception room");
 
 
         //création des clés
-        Key key1 = new Key("clé_torture", "Salle de torture");
-        Key key2 = new Key("clé_cachot", "Cachot");
-        Key key3 = new Key("clé_reception", "Salle de réception");
+        Key key1 = new Key("Bloody key", "Torture chamber");
+        Key key2 = new Key("Old key", "Cachot");
+        Key key3 = new Key("Golden key", "Reception room");
 
 
-        Letter letter1 = new Letter("lettre_1",puzzle1, key1);
-        Letter letter2 = new Letter("lettre_2", puzzle2, key2);
-        Letter letter3 = new Letter("lettre_3", puzzle3, key3);
+        Letter letter1 = new Letter("Wet letter",puzzle1, key1);
+        Letter letter2 = new Letter("Chained letter", puzzle2, key2);
+        Letter letter3 = new Letter("Stained letter", puzzle3, key3);
         Crystal crystal = new Crystal("Crystal");
+        Dice dice = new Dice("D20");
 
         //  Ajout des objets dans des locations
-        tableau[0][0].addItem(letter1);
-        tableau[0][1].addItem(letter2);
-        tableau[1][1].addItem(letter3);
-        tableau[0][0].addItem(crystal);
+        tableau[2][2].addItem(letter1);
+        tableau[1][2].addItem(letter2);
+        tableau[1][3].addItem(letter3);
+        tableau[1][2].addItem(crystal);
+        tableau[0][3].addItem(dice);
     }
 
     public Location[][] getWorldMap() {

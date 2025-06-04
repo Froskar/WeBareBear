@@ -22,22 +22,22 @@ public class MoveEast extends Command {
 
         // Vérifie que le joueur n'est pas déjà tout à droite
         if (col == 3) {
-            return "Vous ne pouvez pas aller plus au nord.";
-        } else if (col==2 && row ==0){
-            return "Vous ne pouvez pas aller ici";
+            return "You can't go any further east.";
         } else if (col == 1 && row == 1) {
-            return "Vous ne pouvez pas aller ici";
+            return "You can't go here, there is a wall...";
+        }else if (col == 0 && row == 2) {
+            return "You can't go here, there is a wall...";
         }
 
         // Vérifie si la salle vers laquelle on veut aller est accessible
         Location nextLocation = worldMap.getWorldMap()[row][col+1];
         if (!nextLocation.getState()) {
-            return "Cette pièce est verrouillée. Impossible d'y accéder.";
+            return "This room is locked. Impossible to access.";
         }
         else {
             Player.getInstance().getPosition().setCol(col+1);
             player.markVisited(nextLocation);
-            return "Vous êtes maintenant dans :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
+            return "You are now in :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
 
         }
 

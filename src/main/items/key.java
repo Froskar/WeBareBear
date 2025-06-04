@@ -14,6 +14,6 @@ public class Key extends Item {
 
     @Override
     public String getDescription() {
-        return "Une clé ouvrant la salle « " + locationToUnlock + " ».";
+        return "A key to open « " + locationToUnlock + " ».";
     }
 }

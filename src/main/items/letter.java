@@ -24,6 +24,6 @@ public class Letter extends Item {
 
     @Override
     public String getDescription() {
-        return "Une lettre froissée. Elle contient l'énigme :\n" + puzzle.getQuestion();
+        return "A crumpled letter. It contains the enigma :\n" + puzzle.getQuestion();
     }
 }

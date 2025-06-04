@@ -10,17 +10,18 @@ public class CommandRegistery {
     public CommandRegistery() {
         commandes = new HashMap<>();
         // Commandes de base
-        addCommand("help", new help("help", "Liste des commandes",true));
-        addCommand("up", new MoveNorth("up", "Se déplacer au Nord",true));
-        addCommand("down", new MoveSouth("down", "Se déplacer au sud",true));
-        addCommand("left", new MoveWest("left", "Se déplacer à l'ouest",true));
-        addCommand("right", new MoveEast("right", "Se déplacer à l'est",true));
-        addCommand("map", new map("map", "Liste des commandes",true));
-        addCommand("take", new Take("take", "Prend un objet pour le mettre dans l'inventaire",true));
-        addCommand("look", new Look("look", "Permet de voirs quels objets sont dans la pièce où vous vous trouvez",true));
-        addCommand("use", new Use("use", "Permet d'utiliser un objet, soit la lettre soit la clé",true));
-        addCommand("inventory", new ShowInventory("Inventory", "Permet d'afficher tous les objets dans votre inventaire",true));
+        addCommand("help", new help("help", "List of commands",true));
+        addCommand("up", new MoveNorth("up", "Move north",true));
+        addCommand("down", new MoveSouth("down", "Move south",true));
+        addCommand("left", new MoveWest("left", "Move west",true));
+        addCommand("right", new MoveEast("right", "Move east",true));
+        addCommand("map", new map("map", "View map",true));
+        addCommand("take", new Take("take", "Takes an item and puts it in the inventory",true));
+        addCommand("look", new Look("look", "See what objects are in the room you are in",true));
+        addCommand("use", new Use("use", "Allows you to use an object, either the letter or the key",true));
+        addCommand("inventory", new ShowInventory("Inventory", "Displays all the items in your inventory",true));
         addCommand("teleport",new Teleport("teleport","Teleports you wherever you want",false));
+        addCommand("say",new Say("say","With this command you can answer riddles",true));
 
     }
 
@@ -33,9 +34,9 @@ public class CommandRegistery {
     public void removeCommand(String nom) {
         if (commandes.containsKey(nom)) {
             commandes.remove(nom);
-            System.out.println("Commande '" + nom + "' supprimée.");
+            System.out.println("Command '" + nom + "' deleted.");
         } else {
-            System.out.println("Commande '" + nom + "' introuvable.");
+            System.out.println("Command '" + nom + "' not found.");
         }
     }
 

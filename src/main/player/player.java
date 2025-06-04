@@ -14,7 +14,7 @@ public class Player {
     private static Player INSTANCE;
 
     public Player(String hero) {
-        String name = "Héros";
+        String name = "Hero";
         this.position = new Position(0, 0);
         this.inventory = new Inventory();
         this.visitedLocations = new HashSet<>();
