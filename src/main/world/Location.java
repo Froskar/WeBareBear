@@ -64,7 +64,10 @@ public class Location implements IPrintable {
 
     @Override
     public String getPrintableString() {
-        return name;
+        if (state){
+            return name;
+        }
+        return "";
     }
 
     @Override
