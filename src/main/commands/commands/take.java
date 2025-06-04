@@ -33,6 +33,10 @@ public class Take extends Command {
         Item item = currentLocation.removeItem(itemName);
         inventory.addItem(item);
 
+        if (!item.isTakeable()) {
+            return "You cannot take \"" + item.getName() + "\".";
+        }
+
         if (item instanceof main.items.Crystal) {
             Command commandTeleport = CommandRegistery.getCommandInstance().getCommand("teleport");
             if (commandTeleport != null) {

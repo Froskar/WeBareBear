@@ -2,6 +2,7 @@ package main.world;
 
 import main.Game;
 import main.items.*;
+import main.items.Object;
 
 public class WorldMap {
 
@@ -54,12 +55,16 @@ public class WorldMap {
         Crystal crystal = new Crystal("Crystal");
         Dice dice = new Dice("D20");
 
+        //objets qui ne peuvent pas êtres pris
+        Object object1 = new Object("Flask","A glass flask filled with a potion");
+
         //  Ajout des objets dans des locations
         tableau[2][2].addItem(letter1);
         tableau[1][2].addItem(letter2);
         tableau[1][3].addItem(letter3);
         tableau[1][2].addItem(crystal);
         tableau[0][3].addItem(dice);
+        tableau[0][0].addItem(object1);
     }
 
     public Location[][] getWorldMap() {

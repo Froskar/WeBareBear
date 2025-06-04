@@ -22,6 +22,7 @@ public class CommandRegistery {
         addCommand("inventory", new ShowInventory("Inventory", "Displays all the items in your inventory",true));
         addCommand("teleport",new Teleport("teleport","Teleports you wherever you want",false));
         addCommand("say",new Say("say","With this command you can answer riddles",true));
+        addCommand("inspect", new Inspect("inspect","Give a close-up of an object",true));
 
     }
 

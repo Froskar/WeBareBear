@@ -10,7 +10,7 @@ public class Dice extends Item {
     }
 
     public int rollDice(){
-        return (int)(Math.random() * 6) + 1;
+        return (int)(Math.random() * 5) + 1;
     }
 
     @Override

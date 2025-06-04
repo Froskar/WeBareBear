@@ -63,18 +63,17 @@ public class Use extends Command {
             if (result == 1) {
                 System.out.println("You rolled 1...Critical miss...A trap activates and an axe falls on your head.");
                 System.out.println("You died.");
+                System.out.println("Maybe you'll get luckier next time...");
                 Game.getGameInstance().setIsRunning(false);
                 return "";
             }
 
-            if (result == 6 || result == 5 || result == 3) {
+            if (result == 5 || result == 4 || result == 3 || result == 2) {
                 // Grant the key for the final zone ("A locked door")
                 Key finalKey = new Key("Final key", "A locked door");
                 Player.getInstance().getInventory().addItem(finalKey);
                 return "You rolled 20 ! Critical success! You receive: " + finalKey.getName() + " (use it to open \"A locked door\").";
             }
-
-            return "Nothing special happens. You should try again";
         }
 
         return "This object cannot be used.";
