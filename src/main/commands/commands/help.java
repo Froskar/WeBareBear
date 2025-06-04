@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class help extends Command {
 
-    public help(String name, String descr) {
-        super(name, descr);
+    public help(String name, String descr, boolean commandState) {
+        super(name, descr, commandState);
     }
 
     @Override
@@ -21,8 +21,10 @@ public class help extends Command {
 
         for (String nom : commandes.keySet()) {
             Command cmd = commandes.get(nom);
-            String description = cmd.getDescription();
-            output += " - " + nom + " : " + description + "\n";
+            if (cmd.getCommandState()) {
+                String description = cmd.getDescription();
+                output += " - " + nom + " : " + description + "\n";
+            }
         }
 
         return output;

@@ -9,7 +9,7 @@ import java.util.Map;
 public class Location implements IPrintable {
     private final String name;
     private final String description;
-    private boolean state; // enlever 'final' pour pouvoir déverrouiller la salle
+    private boolean state;
     private final HashMap<String, Item> items;
 
     public Location(String name, String description, boolean state) {
@@ -39,22 +39,18 @@ public class Location implements IPrintable {
         return items;
     }
 
-    /* Ajoute un item (nom en minuscule) dans la HashMap. */
     public void addItem(Item item) {
         items.put(item.getName().toLowerCase(), item);
     }
 
-    /* Retire et retourne l'item nommé itemName (minuscule). */
     public Item removeItem(String itemName) {
         return items.remove(itemName.toLowerCase());
     }
 
-    /* Retourne TRUE s’il y a au moins un item. */
     public boolean hasItems() {
         return !items.isEmpty();
     }
 
-    /* Liste tous les noms d’items contenus dans cette salle. */
     public String listItems() {
         if (items.isEmpty()) {
             return "Il n'y a aucun objet ici.";
@@ -68,11 +64,11 @@ public class Location implements IPrintable {
 
     @Override
     public String getPrintableString() {
-        return "";
+        return name;
     }
 
     @Override
     public boolean isGrayedOut() {
-        return false;
+        return !state;
     }
 }

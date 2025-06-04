@@ -9,8 +9,8 @@ import static main.world.WorldMap.getWorldInstance;
 
 public class Look extends Command {
 
-    public Look(String name, String descr) {
-        super(name, descr);
+    public Look(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override

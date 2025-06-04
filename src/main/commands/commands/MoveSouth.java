@@ -10,8 +10,8 @@ import static main.world.WorldMap.getWorldInstance;
 
 public class MoveSouth extends Command {
 
-    public MoveSouth(String name, String descr) {
-        super(name, descr);
+    public MoveSouth(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
 
@@ -34,6 +34,7 @@ public class MoveSouth extends Command {
         }
         else {
             Player.getInstance().getPosition().setRow(row+1);
+            player.markVisited(nextLocation);
             return "Vous êtes maintenant dans :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
         }
     }

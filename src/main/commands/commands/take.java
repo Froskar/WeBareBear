@@ -1,6 +1,7 @@
 package main.commands.commands;
 
 import main.commands.Command;
+import main.commands.CommandRegistery;
 import main.items.Item;
 import main.player.Player;
 import main.player.Inventory;
@@ -11,8 +12,8 @@ import java.util.Scanner;
 
 public class Take extends Command {
 
-    public Take(String name, String descr) {
-        super(name, descr);
+    public Take(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override
@@ -29,9 +30,16 @@ public class Take extends Command {
         if (!currentLocation.getItems().containsKey(itemName)) {
             return "Cet objet n’est pas présent ici.";
         }
-
         Item item = currentLocation.removeItem(itemName);
         inventory.addItem(item);
+
+        if (item instanceof main.items.Crystal) {
+            Command commandTeleport = CommandRegistery.getCommandInstance().getCommand("teleport");
+            if (commandTeleport != null) {
+                commandTeleport.setCommandState(true);
+            }
+            return "Vous avez récupéré : " + item.getName() + ". La commande teleport est maintenant disponible !";
+        }
         return "Vous avez récupéré : " + item.getName();
     }
 }

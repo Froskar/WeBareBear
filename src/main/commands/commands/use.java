@@ -12,8 +12,8 @@ import java.util.Scanner;
 
 public class Use extends Command {
 
-    public Use(String name, String descr) {
-        super(name, descr);
+    public Use(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override
@@ -49,17 +49,13 @@ public class Use extends Command {
                     }
                 }
             }
-
-            // Si aucune salle ne porte ce nom
             return "Aucune salle ne correspond à cette clé.";
         }
 
-        //  Si c'est une lettre, on l'affiche (éventuellement on pourrait ajouter un puzzle)
         if (item instanceof Letter letter) {
             return "Vous lisez la lettre :\n" + letter.read();
         }
 
-        //  Autres objets (puzzle, etc.) : si vous voulez gérer un 'solve', faites-le ici.
         return "Cet objet ne peut pas être utilisé.";
     }
 }

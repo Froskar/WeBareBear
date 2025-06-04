@@ -9,8 +9,8 @@ import main.player.Position;
 
 public class map extends Command {
     private final WorldMap worldMap;
-    public map(String name, String descr) {
-        super(name, descr);
+    public map(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
         this.worldMap = WorldMap.getWorldInstance();
     }
     @Override

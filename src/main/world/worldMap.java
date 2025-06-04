@@ -1,6 +1,7 @@
 package main.world;
 
 import main.Game;
+import main.items.Crystal;
 import main.items.Key;
 import main.items.Letter;
 import main.items.Puzzle;
@@ -59,11 +60,13 @@ public class WorldMap {
         Letter letter1 = new Letter("lettre_1",puzzle1, key1);
         Letter letter2 = new Letter("lettre_2", puzzle2, key2);
         Letter letter3 = new Letter("lettre_3", puzzle3, key3);
+        Crystal crystal = new Crystal("Crystal");
 
         //  Ajout des objets dans des locations
         tableau[0][0].addItem(letter1);
         tableau[0][1].addItem(letter2);
         tableau[1][1].addItem(letter3);
+        tableau[0][0].addItem(crystal);
     }
 
     public Location[][] getWorldMap() {
@@ -77,6 +80,19 @@ public class WorldMap {
             INSTANCE = new WorldMap();
         }
         return INSTANCE;
+    }
+
+    public static int[] getLocationCoordinates(String locationName) {
+        Location[][] map = getWorldInstance().getWorldMap();
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                Location loc = map[i][j];
+                if (loc != null && loc.getName().equalsIgnoreCase(locationName)) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
     }
 
 

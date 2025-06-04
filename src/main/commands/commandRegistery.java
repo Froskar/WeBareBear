@@ -10,16 +10,17 @@ public class CommandRegistery {
     public CommandRegistery() {
         commandes = new HashMap<>();
         // Commandes de base
-        addCommand("help", new help("help", "Liste des commandes"));
-        addCommand("movenorth", new MoveNorth("movenorth", "Se déplacer au Nord"));
-        addCommand("movesouth", new MoveSouth("movesouth", "Se déplacer au sud"));
-        addCommand("movewest", new MoveWest("moveWest", "Se déplacer à l'ouest"));
-        addCommand("moveeast", new MoveEast("moveeast", "Se déplacer à l'est"));
-        addCommand("map", new map("map", "Liste des commandes"));
-        addCommand("take", new Take("take", "Prend un objet pour le mettre dans l'inventaire"));
-        addCommand("look", new Look("look", "Permet de voirs quels objets sont dans la pièce où vous vous trouvez"));
-        addCommand("use", new Use("use", "Permet d'utiliser un objet, soit la lettre soit la clé"));
-        addCommand("inventory", new ShowInventory("Inventory", "Permet d'afficher tous les objets dans votre inventaire"));
+        addCommand("help", new help("help", "Liste des commandes",true));
+        addCommand("up", new MoveNorth("up", "Se déplacer au Nord",true));
+        addCommand("down", new MoveSouth("down", "Se déplacer au sud",true));
+        addCommand("left", new MoveWest("left", "Se déplacer à l'ouest",true));
+        addCommand("right", new MoveEast("right", "Se déplacer à l'est",true));
+        addCommand("map", new map("map", "Liste des commandes",true));
+        addCommand("take", new Take("take", "Prend un objet pour le mettre dans l'inventaire",true));
+        addCommand("look", new Look("look", "Permet de voirs quels objets sont dans la pièce où vous vous trouvez",true));
+        addCommand("use", new Use("use", "Permet d'utiliser un objet, soit la lettre soit la clé",true));
+        addCommand("inventory", new ShowInventory("Inventory", "Permet d'afficher tous les objets dans votre inventaire",true));
+        addCommand("teleport",new Teleport("teleport","Teleports you wherever you want",false));
 
     }
 
