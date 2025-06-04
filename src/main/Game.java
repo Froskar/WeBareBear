@@ -4,6 +4,9 @@ import main.commands.Command;
 import main.commands.CommandRegistery;
 import main.player.Player;
 import main.world.WorldMap;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 import java.util.Scanner;
 
@@ -27,8 +30,10 @@ public class Game {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Initializing game...");
-        System.out.println("Welcome to the game! Type “help” for the list of commands.");
+        System.out.println(StringStyling.StyleString("Initializing game...", Style.ITALIC, Color.GREEN));
+        System.out.println(StringStyling.StyleString("Welcome to the game! Type “help” for the list of commands.", Style.BOLD, Color.WHITE));
+
+
 
         while (isRunning) {
             System.out.print("> ");
@@ -52,7 +57,9 @@ public class Game {
             }
             if (Player.getInstance().getPosition().getCol() == 0 && Player.getInstance().getPosition().getRow() == 2){
                 isRunning = false;
-                System.out.println("Vous avez terminé le jeu");
+
+                System.out.println(StringStyling.StyleString("You escaped, congrats", Style.BOLD, Color.GREEN));
+                System.out.println(StringStyling.StyleString("=========================", Style.BOLD, Color.GREEN));
             }
         }
     }

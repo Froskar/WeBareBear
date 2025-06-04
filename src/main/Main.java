@@ -15,6 +15,6 @@ public class Main {
     public static void main(String[] args) {
         Game game = new Game();
         Game.getGameInstance().run();
-        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.BLACK));
+        System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.GREEN));
     }
 }
