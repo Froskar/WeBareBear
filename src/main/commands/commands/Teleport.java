@@ -18,7 +18,7 @@ public class Teleport extends Command {
     public String execute() {
         Player player = Player.getInstance();
 
-        if (Player.getInstance().getInventory().hasItem("Crystal")) {
+        if (Player.getInstance().getInventory().hasItem("crystal")) {
             // 1) Récupération des locations déjà visitées
             Set<Location> visited = player.getVisitedLocations();
             if (visited.isEmpty()) {

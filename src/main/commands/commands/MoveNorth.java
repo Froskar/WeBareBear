@@ -24,7 +24,7 @@ public class MoveNorth extends Command {
 
         // Vérifie que le joueur n'est pas déjà en haut
         if (row == 0) {
-            return "Vous ne pouvez pas aller plus au nord.";
+            return "You can't go further up";
         } else if (col == 2 && row == 2) {
             return "You can't go here there is a wall...";
         }else if (col == 2 && row == 1) {

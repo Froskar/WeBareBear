@@ -28,7 +28,7 @@ public class Take extends Command {
         String itemName = scanner.nextLine().trim();
 
         if (!currentLocation.getItems().containsKey(itemName)) {
-            return "This object is not available here.";
+            return "There is no such object in this room.";
         }
         Item item = currentLocation.removeItem(itemName);
         inventory.addItem(item);

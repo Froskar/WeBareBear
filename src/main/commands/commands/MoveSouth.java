@@ -24,7 +24,7 @@ public class MoveSouth extends Command {
 
         // Vérifie que le joueur n'est pas déjà en bas
         if (row == 2) {
-            return "Vous ne pouvez pas aller plus au sud.";
+            return "You can't go further down.";
         } else if (col == 2 && row == 1) {
             return "You can't go here there is a wall...";
         }else if (col == 2 && row == 0) {

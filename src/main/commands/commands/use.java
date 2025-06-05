@@ -2,10 +2,7 @@ package main.commands.commands;
 
 import main.Game;
 import main.commands.Command;
-import main.items.Dice;
-import main.items.Item;
-import main.items.Key;
-import main.items.Letter;
+import main.items.*;
 import main.player.Player;
 import main.world.Location;
 import main.world.WorldMap;
@@ -53,10 +50,12 @@ public class Use extends Command {
             }
             return "No room corresponds to this key.";
         }
-
-        if (item instanceof Letter letter) {
-            return "You read the letter :\n" + letter.read();
+        if (item instanceof Letter letter){
+            System.out.printf("You can't use a letter, but you can inspect it.");
+            System.out.println(" ");
+            return "";
         }
+
         if (item instanceof Dice dice) {
             int result = dice.rollDice();
 
@@ -74,6 +73,13 @@ public class Use extends Command {
                 Player.getInstance().getInventory().addItem(finalKey);
                 return "You rolled 20 ! Critical success! You receive: " + finalKey.getName() + " (use it to open \"A locked door\").";
             }
+        }
+
+        if (item instanceof Glass glass){
+            System.out.println("Why did you drink that? I told you not to.");
+            System.out.println("You died.");
+            Game.getGameInstance().setIsRunning(false);
+            return "";
         }
 
         return "This object cannot be used.";

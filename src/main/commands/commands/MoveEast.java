@@ -22,7 +22,7 @@ public class MoveEast extends Command {
 
         // Vérifie que le joueur n'est pas déjà tout à droite
         if (col == 3) {
-            return "You can't go any further east.";
+            return "You can't go any further right";
         } else if (col == 1 && row == 1) {
             return "You can't go here, there is a wall...";
         }else if (col == 0 && row == 2) {

@@ -14,18 +14,18 @@ public class WorldMap {
 
 
     private WorldMap() {
-        tableau[0][0] = new Location("Storage room", "A wine and food storage room.", true);
-        tableau[0][1] = new Location("Narrow hallway", "A narrow hallway that's hard to squeeze through.", true);
-        tableau[0][2] = new Location("Throne room", "A gigantic room, full of relics from an ancient time.", true);
-        tableau[0][3] = new Location("Cachot", "A dark, damp dungeon, where there are still bones and the amoebae are chilling...", false);
+        tableau[0][0] = new Location("Storage room", "Here you are in a storage room, full of old wine barrels and bread harder than stone. \nProbably abandoned for years.", true);
+        tableau[0][1] = new Location("Narrow hallway", "You cross a narrow corridor. It's hard to squeeze through, but you manage.\n But you end up with a lot of cobwebs all over your face.", true);
+        tableau[0][2] = new Location("Throne room", "Here you are in a gigantic room, filled with relics from a bygone age. In the middle is a throne, probably that of King Dagmar.\n The king's chair has fallen over, but a glass is still half full  next to it. \nI wouldn't drink it if I were you. ", true);
+        tableau[0][3] = new Location("Cachot", " You enter a dark, damp room. On the door is an inscription: \"Cachot\", you enter and come face to face with skeletons. \nThe atmosphere is chilling. I wouldn't hang around here if I were you - who knows, maybe the place is haunted? ", false);
         tableau[1][0] = new Location("Cave", "An old cave, with cobwebs and rats running around when you arrive.", true);
-        tableau[1][1] = new Location("Hole in the ground", "BAM ! You've fallen into a hole. Fortunately, there's a rope to pull you out.", true);
-        tableau[1][2] = new Location("Reception room", "Skeletons around a table, they must have been feasting in those days.", false);
-        tableau[1][3] = new Location("Main corridor", "A large corridor, with imposing statues of guards lining the sides.", true);
+        tableau[1][1] = new Location("Hole in the ground", "BAM!! Oh noooo, you've fallen into a hole. \nYou look around and find a rope, luckily you can get out again if you're too scared to cross the underpass. \n", true);
+        tableau[1][2] = new Location("Reception room", "Wow, you've just discovered what appears to be a reception room. \nThere's a large table in the middle of the room. Something unusual must have happened here. \nSkeletons are sitting around the table, as if they had died in the middle of a meal.", false);
+        tableau[1][3] = new Location("Main corridor", ":You cross the main corridor, with large, dilapidated paintings adorning the walls.\n Armour stands all along the corridor. You feel overwhelmed, has someone followed you? \nOr is it the armour watching you?", true);
         tableau[2][0] = new Location("A locked door", "You are in a secret room filled with magical items... But you see a door at the end, you feel a breeze through the door. Maybe you can escape !", false);
-        tableau[2][1] = new Location("Dirty passageway", "BEURK ! A passageway with cobwebs, rotting water seeping into your shoes.", true);
+        tableau[2][1] = new Location("Dirty passageway", "BEURK !  You've found a passage under the ground, no need to get out of the hole.\n Yuck, you look around you, water is stagnating on the ground, it's seeping into your shoes.\n Grr, a strange noise comes from behind you. I wouldn't hang around here if I were you.", true);
         tableau[2][2] = new Location("Straicases", "Great, stairs! A few steps are damaged but you manage to climb over them.", true);
-        tableau[2][3] = new Location("Torture chamber", "A torture chamber, with instruments of torture hanging on the walls and blood drying on the floor.", false);
+        tableau[2][3] = new Location("Torture chamber", "You've discovered the torture room, old torture instruments still hanging on the walls. \nThere's dried blood on the floor. Oh, but there seems to be fresh blood on one of the walls...", false);
 
         Puzzle puzzle1 = new Puzzle("énigme_1",
                 "3 fish are in a bucket, one of them dies, how many are left?",
@@ -54,6 +54,7 @@ public class WorldMap {
         Letter letter3 = new Letter("Stained letter", puzzle3, key3);
         Crystal crystal = new Crystal("Crystal");
         Dice dice = new Dice("D20");
+        Glass glass = new Glass("Glass");
 
         //objets qui ne peuvent pas êtres pris
         Object object1 = new Object("Flask","A glass flask filled with a potion");
@@ -65,6 +66,7 @@ public class WorldMap {
         tableau[1][2].addItem(crystal);
         tableau[0][3].addItem(dice);
         tableau[0][0].addItem(object1);
+        tableau[0][2].addItem(glass);
     }
 
     public Location[][] getWorldMap() {
@@ -92,8 +94,5 @@ public class WorldMap {
         }
         return null;
     }
-
-
-
 }
 
