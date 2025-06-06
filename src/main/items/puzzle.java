@@ -1,8 +1,5 @@
 package main.items;
 
-/**
- * Une énigme contenant une question, une réponse, et la salle qu'elle déverrouille si elle est résolue.
- */
 public class Puzzle extends Item {
     private final String question;
     private final String answer;
@@ -25,10 +22,6 @@ public class Puzzle extends Item {
         return solved;
     }
 
-    /**
-     * Tente de résoudre l'énigme avec la réponse tapée.
-     * Si correcte, marque solved = true.
-     */
     public boolean trySolve(String response) {
         if (response.toLowerCase().equals(answer)) {
             solved = true;
