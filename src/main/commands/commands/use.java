@@ -1,9 +1,8 @@
 package main.commands.commands;
 
+import main.Game;
 import main.commands.Command;
-import main.items.Item;
-import main.items.Key;
-import main.items.Letter;
+import main.items.*;
 import main.player.Player;
 import main.world.Location;
 import main.world.WorldMap;
@@ -12,24 +11,24 @@ import java.util.Scanner;
 
 public class Use extends Command {
 
-    public Use(String name, String descr) {
-        super(name, descr);
+    public Use(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override
     public String execute() {
         Player player = Player.getInstance();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Quel objet voulez-vous utiliser ? > ");
+        System.out.print("Which item do you want to use? > ");
         String itemName = scanner.nextLine().trim();
 
-        // 1. Récupérer l'item, en ignorant la casse
+        // Récupérer l'item
         Item item = player.getInventory().getItem(itemName);
         if (item == null) {
-            return "Vous ne possédez pas cet objet.";
+            return "You do not own this item.";
         }
 
-        // 2. Si c'est une Key, on déverrouille la salle correspondante
+        // Si c'est une Key, on déverrouille la bonne salle
         if (item instanceof Key key) {
             String targetLocationName = key.getLocationToUnlock();
             Location[][] map = WorldMap.getWorldInstance().getWorldMap();
@@ -40,26 +39,49 @@ public class Use extends Command {
                     Location loc = map[r][c];
                     if (loc.getName().equalsIgnoreCase(targetLocationName)) {
                         if (loc.getState()) {
-                            return "La salle \"" + loc.getName() + "\" est déjà déverrouillée.";
+                            return "Room \"" + loc.getName() + "\" is already unlocked.";
                         } else {
                             loc.setState(true);
-                            return "Vous avez utilisé la clé \"" + key.getName() +
-                                    "\" et déverrouillé la salle : " + loc.getName();
+                            return "You have used the \"" + key.getName() +
+                                    "\" and unlocked the room : " + loc.getName();
                         }
                     }
                 }
             }
-
-            // Si aucune salle ne porte ce nom
-            return "Aucune salle ne correspond à cette clé.";
+            return "No room corresponds to this key.";
+        }
+        if (item instanceof Letter letter){
+            System.out.printf("You can't use a letter, but you can inspect it.");
+            System.out.println(" ");
+            return "";
         }
 
-        // 3. Si c'est une lettre, on l'affiche (éventuellement on pourrait ajouter un puzzle)
-        if (item instanceof Letter letter) {
-            return "Vous lisez la lettre :\n" + letter.read();
+        if (item instanceof Dice dice) {
+            int result = dice.rollDice();
+
+            if (result == 1) {
+                System.out.println("You rolled 1...Critical miss...A trap activates and an axe falls on your head.");
+                System.out.println("You died.");
+                System.out.println("Maybe you'll get luckier next time...");
+                Game.getGameInstance().setIsRunning(false);
+                return "";
+            }
+
+            if (result == 5 || result == 4 || result == 3 || result == 2) {
+                // Grant the key for the final zone ("A locked door")
+                Key finalKey = new Key("Final key", "A locked door");
+                Player.getInstance().getInventory().addItem(finalKey);
+                return "You rolled 20 ! Critical success! You receive: " + finalKey.getName() + " (use it to open \"A locked door\").";
+            }
         }
 
-        // 4. Autres objets (puzzle, etc.) : si vous voulez gérer un 'solve', faites-le ici.
-        return "Cet objet ne peut pas être utilisé.";
+        if (item instanceof Glass glass){
+            System.out.println("Why did you drink that? I told you not to.");
+            System.out.println("You died.");
+            Game.getGameInstance().setIsRunning(false);
+            return "";
+        }
+
+        return "This object cannot be used.";
     }
 }

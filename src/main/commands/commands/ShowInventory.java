@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class ShowInventory extends Command {
 
-    public ShowInventory(String name, String descr) {
-        super(name, descr);
+    public ShowInventory(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override

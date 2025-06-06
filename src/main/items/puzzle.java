@@ -1,14 +1,16 @@
 package main.items;
 
+/**
+ * Une énigme contenant une question, une réponse, et la salle qu'elle déverrouille si elle est résolue.
+ */
 public class Puzzle extends Item {
     private final String question;
     private final String answer;
     private final String unlocksLocation;
     private boolean solved;
 
-    public Puzzle(String question, String answer, String unlocksLocation, String name, String description) {
-        super(name, description);
-        this.name = "énigme";
+    public Puzzle(String name, String question, String answer, String unlocksLocation) {
+        this.name = name;                 // ex. "énigme_1", "énigme_2", etc.
         this.question = question;
         this.answer = answer.toLowerCase();
         this.unlocksLocation = unlocksLocation;
@@ -23,6 +25,10 @@ public class Puzzle extends Item {
         return solved;
     }
 
+    /**
+     * Tente de résoudre l'énigme avec la réponse tapée.
+     * Si correcte, marque solved = true.
+     */
     public boolean trySolve(String response) {
         if (response.toLowerCase().equals(answer)) {
             solved = true;
@@ -37,6 +43,10 @@ public class Puzzle extends Item {
 
     @Override
     public String getDescription() {
-        return solved ? "Cette énigme a été résolue." : "Une énigme à résoudre : " + question;
+        if (solved) {
+            return "Enigma \"" + name + "\" already resolved.";
+        } else {
+            return "Enigma \"" + name + "\" : " + question;
+        }
     }
 }

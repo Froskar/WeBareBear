@@ -3,6 +3,7 @@ package main.player;
 import main.items.Item;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Inventory {
 
@@ -16,9 +17,6 @@ public class Inventory {
         items.put(item.getName(), item);
     }
 
-    public Item removeItem(String itemName) {
-        return items.remove(itemName);
-    }
 
     public Item getItem(String name) {
         for (String key : items.keySet()) {
@@ -35,13 +33,17 @@ public class Inventory {
 
     public String listItems() {
         if (items.isEmpty()) {
-            System.out.println("Votre inventaire est vide.");
+            System.out.println("Your inventory is empty.");
         } else {
-            System.out.println("Inventaire :");
+            System.out.println("Inventory :");
             for (String key : items.keySet()) {
                 System.out.println("- " + key);
             }
         }
         return null;
     }
+    public Map<String, Item> getItems() {
+        return items;
+    }
+
 }

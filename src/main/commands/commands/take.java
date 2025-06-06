@@ -1,6 +1,7 @@
 package main.commands.commands;
 
 import main.commands.Command;
+import main.commands.CommandRegistery;
 import main.items.Item;
 import main.player.Player;
 import main.player.Inventory;
@@ -11,8 +12,8 @@ import java.util.Scanner;
 
 public class Take extends Command {
 
-    public Take(String name, String descr) {
-        super(name, descr);
+    public Take(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
     @Override
@@ -23,15 +24,31 @@ public class Take extends Command {
         Inventory inventory = player.getInventory();
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Quel objet voulez-vous prendre ? ");
+        System.out.print("Which item do you want to take? ");
         String itemName = scanner.nextLine().trim();
 
         if (!currentLocation.getItems().containsKey(itemName)) {
-            return "Cet objet n’est pas présent ici.";
+            return "There is no such object in this room.";
         }
 
-        Item item = currentLocation.removeItem(itemName);
+        Item item = currentLocation.getItems().get(itemName);
+
+        if (!item.isTakeable()) {
+            return "You cannot take \"" + item.getName() + "\".";
+        }
+
+
+        if (item instanceof main.items.Crystal) {
+            Command commandTeleport = CommandRegistery.getCommandInstance().getCommand("teleport");
+            if (commandTeleport != null) {
+                commandTeleport.setCommandState(true);
+            }
+            currentLocation.removeItem(itemName);
+            inventory.addItem(item);
+            return "You have picked up : " + item.getName() + ". The teleport command is now available!";
+        }
+        currentLocation.removeItem(itemName);
         inventory.addItem(item);
-        return "Vous avez récupéré : " + item.getName();
+        return "You have picked up : " + item.getName();
     }
 }

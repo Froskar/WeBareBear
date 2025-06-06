@@ -4,13 +4,13 @@ import main.items.Item;
 import utils.IPrintable;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Location implements IPrintable {
-
     private final String name;
     private final String description;
     private boolean state;
-    private final HashMap<String, Item> items; // clef = nom de l'item
+    private final HashMap<String, Item> items;
 
     public Location(String name, String description, boolean state) {
         this.name = name;
@@ -31,48 +31,47 @@ public class Location implements IPrintable {
         return state;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
+    public void setState(boolean newState) {
+        this.state = newState;
     }
-    public HashMap<String, Item> getItems() {
+
+    public Map<String, Item> getItems() {
         return items;
     }
 
     public void addItem(Item item) {
-        if (item.getName() != null) {
-            items.put(item.getName(), item);
-        } else {
-            System.out.println("Tentative d'ajout d'un item sans nom !");
-        }
+        items.put(item.getName().toLowerCase(), item);
     }
+
     public Item removeItem(String itemName) {
-        return items.remove(itemName);
+        return items.remove(itemName.toLowerCase());
     }
 
     public boolean hasItems() {
         return !items.isEmpty();
     }
+
     public String listItems() {
         if (items.isEmpty()) {
-            return "Il n'y a aucun objet ici.";
+            return "There's nothing to see here";
         }
-
-        StringBuilder sb = new StringBuilder("Objets présents :\n");
-        for (String itemName : items.keySet()) {
-            sb.append(" - ").append(itemName).append("\n");
+        StringBuilder sb = new StringBuilder("Objects present :\n");
+        for (Map.Entry<String, Item> entry : items.entrySet()) {
+            sb.append(" - ").append(entry.getKey()).append("\n");
         }
         return sb.toString();
     }
 
     @Override
     public String getPrintableString() {
-        return name;
+        if (state){
+            return name;
+        }
+        return "";
     }
 
     @Override
     public boolean isGrayedOut() {
         return !state;
     }
-
-
 }

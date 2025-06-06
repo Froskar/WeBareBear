@@ -9,8 +9,8 @@ import static main.world.WorldMap.getWorldInstance;
 
 public class MoveNorth extends Command {
 
-    public MoveNorth(String name, String descr) {
-        super(name, descr);
+    public MoveNorth(String name, String descr, boolean commandState) {
+        super(name, descr,commandState);
     }
 
 
@@ -24,19 +24,24 @@ public class MoveNorth extends Command {
 
         // Vérifie que le joueur n'est pas déjà en haut
         if (row == 0) {
-            return "Vous ne pouvez pas aller plus au nord.";
-        } else if (col == 2 && row == 1) {
-            return "Vous ne pouvez pas aller ici";
+            return "You can't go further up";
+        } else if (col == 2 && row == 2) {
+            return "You can't go here there is a wall...";
+        }else if (col == 2 && row == 1) {
+            return "You can't go here there is a wall...";
+        }else if (col == 3 && row == 1) {
+            return "You can't go here there is a wall...";
         }
 
         // Vérifie si la salle vers laquelle on veut aller est accessible
         Location nextLocation = worldMap.getWorldMap()[row-1][col];
         if (!nextLocation.getState()) {
-            return "Cette pièce est verrouillée. Impossible d'y accéder.";
+            return "This room is locked. Impossible to access.";
         }
         else {
             Player.getInstance().getPosition().setRow(row-1);
-            return "Vous êtes maintenant dans :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
+            player.markVisited(nextLocation);
+            return "You are now in :  " + nextLocation.getName() +" - "+ nextLocation.getDescription();
         }
 
     }

@@ -1,27 +1,30 @@
 package main.commands.commands;
 
 import main.commands.Command;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import main.commands.CommandRegistery;
 
+import java.util.HashMap;
 
 public class help extends Command {
 
-    public help(String name, String descr) {
-        super(name, descr);
+    public help(String name, String descr, boolean commandState) {
+        super(name, descr, commandState);
     }
 
     @Override
     public String execute() {
-        HashMap<String, Command> commandes = CommandRegistery.getCommandInstance().getCommandRegistery();
+        HashMap<String, Command> commandes = CommandRegistery
+                .getCommandInstance()
+                .getCommandRegistery();
 
-        String output = "Commandes disponibles :\n";
+        String output = "Available commands :\n";
 
         for (String nom : commandes.keySet()) {
-            output += " - " + nom + "\n";
+            Command cmd = commandes.get(nom);
+            if (cmd.getCommandState()) {
+                String description = cmd.getDescription();
+                output += " - " + nom + " : " + description + "\n";
+            }
         }
 
         return output;

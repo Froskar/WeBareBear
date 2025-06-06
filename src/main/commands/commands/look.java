@@ -4,13 +4,16 @@ import main.commands.Command;
 import main.player.Player;
 import main.world.Location;
 import main.world.WorldMap;
+import utils.Color;
+import utils.StringStyling;
+import utils.Style;
 
 import static main.world.WorldMap.getWorldInstance;
 
 public class Look extends Command {
 
-    public Look(String name, String descr) {
-        super(name, descr);
+    public Look(String name, String descr, boolean commandState) {
+        super(name, descr, commandState);
     }
 
     @Override
@@ -18,17 +21,15 @@ public class Look extends Command {
         Player player = Player.getInstance();
         WorldMap worldMap = getWorldInstance();
 
-        int row = Player.getInstance().getPosition().getRow();
-        int col = Player.getInstance().getPosition().getCol();
+        int row = player.getPosition().getRow();
+        int col = player.getPosition().getCol();
         Location currentLocation = worldMap.getWorldMap()[row][col];
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Vous êtes dans : ").append(currentLocation.getName()).append("\n");
-        sb.append(currentLocation.getDescription()).append("\n\n");
-        sb.append(currentLocation.listItems());
-
-        return sb.toString();
+        // Affichage direct via System.out
+        System.out.println(StringStyling.StyleString(("You are in: " + currentLocation.getName()), Style.UNDERLINE, Color.WHITE));
+        System.out.println(currentLocation.getDescription());
+        System.out.println(StringStyling.StyleString(("---+---"), Style.NORMAL, Color.BLACK));
+        System.out.println(currentLocation.listItems());
+        return "";
     }
-
-
 }
