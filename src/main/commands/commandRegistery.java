@@ -11,10 +11,10 @@ public class CommandRegistery {
         commandes = new HashMap<>();
         // Commandes de base
         addCommand("help", new help("help", "List of commands",true));
-        addCommand("up", new MoveNorth("up", "Move north",true));
-        addCommand("down", new MoveSouth("down", "Move south",true));
-        addCommand("left", new MoveWest("left", "Move west",true));
-        addCommand("right", new MoveEast("right", "Move east",true));
+        addCommand("up", new MoveNorth("up", "Move up",true));
+        addCommand("down", new MoveSouth("down", "Move down",true));
+        addCommand("left", new MoveWest("left", "Move left",true));
+        addCommand("right", new MoveEast("right", "Move right",true));
         addCommand("map", new map("map", "View map",true));
         addCommand("take", new Take("take", "Takes an item and puts it in the inventory",true));
         addCommand("look", new Look("look", "See what objects are in the room you are in",true));

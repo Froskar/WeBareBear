@@ -30,20 +30,25 @@ public class Take extends Command {
         if (!currentLocation.getItems().containsKey(itemName)) {
             return "There is no such object in this room.";
         }
-        Item item = currentLocation.removeItem(itemName);
-        inventory.addItem(item);
+
+        Item item = currentLocation.getItems().get(itemName);
 
         if (!item.isTakeable()) {
             return "You cannot take \"" + item.getName() + "\".";
         }
+
 
         if (item instanceof main.items.Crystal) {
             Command commandTeleport = CommandRegistery.getCommandInstance().getCommand("teleport");
             if (commandTeleport != null) {
                 commandTeleport.setCommandState(true);
             }
+            currentLocation.removeItem(itemName);
+            inventory.addItem(item);
             return "You have picked up : " + item.getName() + ". The teleport command is now available!";
         }
+        currentLocation.removeItem(itemName);
+        inventory.addItem(item);
         return "You have picked up : " + item.getName();
     }
 }

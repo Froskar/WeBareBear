@@ -17,9 +17,6 @@ public class Inventory {
         items.put(item.getName(), item);
     }
 
-    public Item removeItem(String itemName) {
-        return items.remove(itemName);
-    }
 
     public Item getItem(String name) {
         for (String key : items.keySet()) {
