@@ -18,3 +18,7 @@ public class Main {
         System.out.println(StringStyling.StyleString("Terminating...", Style.ITALIC, Color.GREEN));
     }
 }
+
+// parfois les fichier se renoment automatiquement avec git, malheureusement nous n'avons pas trouvé comment changer cela
+// si le code ne s'exécute pas, il faut soit renomer les fichier comme dis au dessus, soit supprimer le fichier out et ensuite run
+//Je suis vraiment désolé je n'ai pas trouvé de fix
